@@ -1,0 +1,67 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name = "Ana 'Jiggly' Bunny"        ;Name of character
+displayname = "Jiggly" ;Name of character to display
+versiondate = 02,23,2018     ;09,30,2009
+;startdate = 10,02,2016       ;Version of character (MM-DD-YYYY or X.XX)
+mugenversion = 1.1           ;Version of M.U.G.E.N character works on (X.XX)
+author = "Kazecat"          ;Character author name
+pal.defaults = 1,6,10,4,11,2,3,5,7,8,9             ;Default palettes in order of preference (up to 4)
+                             ;Numbering starts from 1
+localcoord =   1280,720;1152,648; 1280,720 ;320,240 ;960,720; 1920, 1080    ;Local coordinate space width and height
+
+; Files for the player
+[Files]
+cmd     = Jiggly.cmd        ;Command set
+cns     = Jiggly.cns        ;Constants
+cns     = common1.cns
+st      = Jiggly.cns        ;States
+stcommon = common1.cns      ;Common states (from data/ or motif)
+sprite  = Jiggly.sff        ;Sprite
+anim    = Jiggly.air        ;Animation
+sound   = Jiggly.snd           ;Sound
+ai      = Jiggly.ai         ;AI hints data (not used)
+
+Pal2 = goth.act
+pal3 = judy.act
+pal4 = gl.act
+pal5 = hoppo.act
+pal6 = natural.act
+; Maps character selection buttons to palette numbers.
+
+;=========================
+; Palette List
+;=========================
+
+;1 - original Yellow fur
+;2 - Goth
+;3 - Judy Hopps
+;4 - GLwuffie
+;5 - Hoppo
+;6 - Brown Bunny
+;7 - White and red outfit
+;8 - White Bunn, Yellow stripe
+;9 - Chun Li homage
+;10 - Pink outfit
+
+[Palette Keymap]
+x = 1 ;Press button X to select palette 1, etc.
+y = 2
+z = 3
+a = 10
+b = 4
+c = 5
+x2 = 6 ;Hold Start and press button X for palette 7, etc.
+y2 = 7
+z2 = 8
+a2 = 9
+b2 = 11
+c2 = 12
+
+; Arcade mode
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

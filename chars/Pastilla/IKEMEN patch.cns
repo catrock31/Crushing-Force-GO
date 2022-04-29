@@ -1,0 +1,1115 @@
+;--------------------------------------------------------------------------;
+;Gassing Portion
+[statedef 1051]
+type = C
+movetype = A
+physics = C
+anim = 1055
+sprpriority = -2
+ctrl = 0
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "var(0) = %d"
+params = var(0)
+
+[state 1051, remove explod]
+type = removeexplod
+trigger1 = time = 0
+id = 1050
+
+[state 1051, targetstate]
+type = targetstate
+trigger1 = time = 0
+value = ifelse(var(13)=1,1091,1081)
+
+[state 1051, targetlifeadd]
+type = targetlifeadd
+trigger1 = animelemtime(3) > 0 && animelemtime(28) < 0
+value = -2
+persistent = 3
+
+[state 1051, combo add]
+type = hitadd
+trigger1 = animelemtime(3) > 0 && animelemtime(28) < 0
+persistent = 9
+value = 1
+
+
+[state 1050, Heavy FX]
+type = explod
+trigger1 = animelemtime(3) = 0
+anim = 2051
+scale = 1.5,1.5
+sprpriority = 2
+postype = p1
+pos = 240,-50
+ignorehitpause = 1
+
+[state 1051, bind 1]
+type = targetbind
+triggerall = numtarget(1050)
+trigger1 =  animelemtime(2) < 0
+pos = 220,0
+
+[state 1051, bind 1]
+type = targetbind
+triggerall = numtarget(1050)
+trigger1 =  animelemtime(2) >= 0 && animelemtime(28) < 0
+pos = 220,0
+
+[state 1051, explod]
+type = explod
+trigger1 = time = 0
+anim = 1056
+id = 1051
+removeongethit = 1
+bindtime = -1
+sprpriority = 2
+scale = const(size.xscale),const(size.yscale)
+ignorehitpause = 1
+
+[state 1051, explod]
+type = explod
+trigger1 = animelemtime(3) = 0
+anim = 2050
+id = 2050
+removeongethit = 1
+bindtime = -1
+sprpriority = 3
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = null
+trigger1 = !time || animelem = 28,=2
+trigger1 = var(0):=0
+trigger2 = animelem = 28 && numtarget(1050)
+trigger2 = var(0):=target(1050),ID
+
+[State 1000, 2]
+type = Helper
+trigger1 = animelemtime(28) = 0
+helpertype = normal
+name = "Gas Throw"
+ID = 4000
+stateno = 4056
+pos = 0,0
+postype = p2
+ownpal = 1
+ignorehitpause = 1
+
+[state 1051, invunerabillity]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+[state 1051, plsy snd]
+type = playsnd
+trigger1 = animelemtime(3) = 0
+value = S1050,5;S1050,4
+
+[state 1051, plsy snd]
+type = playsnd
+trigger1 = animelemtime(3) = 0
+value = S1050,5;S1050,4
+channel = 2
+
+[state 1051, stop sound]
+type = stopsnd
+trigger1 = animelemtime(28) = 0
+channel = 2
+
+[state 1051, vel set]
+type = veladd
+trigger1 = animelem = 28 || animelem = 29 || animelem = 30
+x = -25
+persistent = 1
+
+[state 1051, end]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;------------------------------------------------------------------------------------ 
+[statedef 3012]
+type = S
+movetype = A
+physics = N
+anim = 3012
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "var(0) = %d"
+params = var(0)
+
+[state 3012, attackmulset]
+type = attackmulset
+trigger1 = 1
+value = parent,fvar(10)
+Persistent = 1
+
+[state 3012, big fart Fx 1]
+type = explod
+trigger1 = animelemtime(3) = 0
+anim = 2052
+postype = p1
+pos = 170,-370
+scale = 3,3
+vel = 24,0
+sprpriority = 5
+removetime = 34
+
+[state 3012, big fart Fx 2]
+type = explod
+trigger1 = animelemtime(3) = 0
+anim = 2052
+postype = p1
+pos = 170,-370
+scale = 3,3
+vel = 12,-12
+sprpriority = 5
+removetime = 34
+
+[state 3011, big fart Fx 3]
+type = explod
+trigger1 = animelemtime(3) = 0
+anim = 2052
+postype = p1
+pos = 170,-370
+scale = 3,3
+vel = 0,-24
+sprpriority = 5
+removetime = 34
+
+[state 3011, big fart Fx 4]
+type = explod
+trigger1 = animelemtime(3) = 0
+anim = 2052
+postype = p1
+pos = 170,-370
+scale = 3,3
+vel = -12,-12
+sprpriority = 5
+removetime = 34
+
+[state 3011, big fart Fx 5]
+type = explod
+trigger1 = animelemtime(3) = 0
+anim = 2052
+postype = p1
+pos = 170,-370
+scale = 3,3
+vel = -24,0
+sprpriority = 5
+removetime = 34
+
+[state 3011, Glass in fart fx]
+type = explod
+trigger1 = parent,animelemtime(45) >= 0 && parent,animelemtime(60) < 0
+anim = 2052
+postype = p1
+pos = 170,-370
+vel = 0,8
+persistent = 8
+scale = 1.5,3
+
+[state 3011, Glass in fart fx]
+type = explod
+trigger1 = parent,animelemtime(45) >= 0 && parent,animelemtime(60) < 0
+anim = 2052
+postype = p1
+pos = 170,-370
+vel = 0,-4
+persistent = 8
+scale = 1.5,3
+
+[state 3012, explosion sound]
+type = playsnd
+trigger1 = animelemtime(3) = 0
+value = S3010,1
+ignorehitpause = 1
+
+[state 3011, bind]
+type = targetlifeadd
+triggerall = parent,stateno = 3001
+trigger1 = parent,animelemtime(45) >= 0 && parent,animelemtime(60) < 0
+value = ceil(parent,fvar(10)*-10)
+persistent = 2
+kill = 1
+
+[state 3011, bind]
+type = targetlifeadd
+trigger1 = parent,stateno = 3001
+trigger1 = animelemtime(3) = 0
+value = -10
+persistent = 0
+
+
+
+[state 3011, bind]
+type = targetbind
+trigger1 = anim = 3012
+trigger1 = animelemtime(1) >= 0 && animelemtime(3) < 0
+pos = 110,-370
+
+
+[state 3011, bind]
+type = targetbind
+trigger1 = anim = 3012
+trigger1 = animelemtime(1) >= 0 && animelemtime(3) < 0
+pos = 110,-370
+
+[state 3011, targetstate]
+type = targetstate
+id = 3000
+trigger1 = animelemtime(3) = 0
+value = 3023
+
+;[state 3012, target drop]
+;type = targetdrop
+;trigger1 = animelemtime(4) = 0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = numtarget(3000) 
+var(0) = target(3000),id
+ignorehitpause = 1
+
+[State 0, Helper]
+type = Helper
+triggerall = Numtarget(3000)
+trigger1 = anim = 3012
+trigger1 = animelemtime(3) = 2
+name = "Melee Poison effect"
+ID = 4006
+stateno = 4056
+pos = 0,0
+postype = p2
+facing = -1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+;[state 1010, helper]
+;type = helper
+;trigger1 = parent,animelemtime(61) = 0
+;name = "Pastilla's Vaccuum Poison"
+;stateno = 1028
+;id = 1028
+;postype = p1
+;pos = 190, -400
+;sprpriority = 2
+;persistent = 0
+
+
+[state 4300, end]
+type = destroyself
+trigger1 = animtime = 0
+
+;----------------------------------------------------------------------------
+
+
+[statedef 3051]
+type = S
+movetype = A
+physics = N
+anim = 3050
+sprpriority = 2
+
+[state 3050, scale]
+type = angledraw
+trigger1 = 1
+scale = 2,2
+ignorehitpause = 1
+
+[state 3050, velset]
+type = velset
+trigger1 = time = 0
+x = 28
+y = -2+(random%4)
+
+[state 3050, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200
+
+[state 3050, hitoverride]
+type = hitoverride
+trigger1 = 1
+attr = SCA, AP,AA,AT
+time = 1
+stateno = 3055
+ignorehitpause = 1
+persistent = 1
+
+[state 3050, nothitby]
+type = nothitby
+trigger1 = 1
+value = ,AA,AT
+ignorehitpause = 1
+[State 3050, 5] 
+type = hitdef
+trigger1 = 1
+trigger1 = !moveguarded
+persistent = 0
+attr = S, HP
+animtype  = back
+damage    = 8,3
+guardflag = MA
+getpower = 0
+givepower = 50
+hitflag = MAF
+pausetime = 2,6
+sparkno = -1
+sparkxy = -10,-60
+hitsound   = F5,4
+hitonce = 1
+id = 4000
+p2facing = 1
+p2sprpriority = 1
+guardsound = S120, 0
+ground.type = high
+ground.slidetime = 16
+ground.hittime  = 16
+ground.velocity = -12,-32
+air.velocity = -24,-32
+guard.velocity = -16            
+guard.hittime = 16
+guard.slidetime = 16
+airguard.velocity = -20,-2 
+airguard.hittime = 16
+guard.kill = 1
+guard.dist = 200
+fall = 1
+fall.recover = 0
+fall.recovertime = 60
+
+[state 3050, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = movehit
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
+ignorehitpause = 1
+
+
+[State 0, Helper]
+type = Helper
+trigger1 = NumTarget(4000)
+trigger1 = movehit
+name = "Ranged Poison effect"
+ID = 4006
+stateno = 4006 
+pos = 0,0
+postype = p2
+facing = -1
+ownpal = 1
+ignorehitpause = 1
+
+[state 3040, end]
+type = changestate
+trigger1 = movecontact
+trigger2 = movereversed
+value = 3055
+
+
+[State 3040, 4]
+type = DestroySelf
+trigger1 = movecontact
+trigger2 = BackEdgeDist < -10
+trigger3 = movereversed
+trigger4 = time > 60
+
+
+;-------------------------------------------------------------------------------
+
+[statedef 4000]
+type = S
+movetype = A
+physics = N
+anim = 3050
+sprpriority = 2
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "var(0) = %d"
+params = var(0)
+
+[state 4000, scale]
+type = angledraw
+trigger1 = 1
+scale = 2,2
+ignorehitpause = 1
+
+[state 4000, velset]
+type = velset
+trigger1 = time = 0
+x = 32
+y = -1+(random%3)
+
+[state 4000, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200
+
+[state 4000, hitoverride]
+type = hitoverride
+trigger1 = 1
+attr = SCA, AP,AA,AT
+time = 1
+stateno = 3055
+ignorehitpause = 1
+persistent = 1
+
+[state 4000, nothitby]
+type = nothitby
+trigger1 = 1
+value = ,AA,AT
+ignorehitpause = 1
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = movehit
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
+ignorehitpause = 1
+
+[State 4000, 5] 
+type = hitdef
+trigger1 = !moveguarded
+persistent = 0
+attr = S, SP
+animtype  = back
+damage    = 25,3
+guardflag = MA
+getpower = 0
+givepower = 50
+hitflag = MAF
+pausetime = 2,6
+sparkno = -1
+sparkxy = -10,-60
+hitsound   = F5,1
+hitonce = 1
+id = 4000
+p2facing = 1
+p2sprpriority = 1
+guardsound = S120, 0
+ground.type = high
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -12,0
+air.velocity = -10,-4
+guard.velocity = -32           
+guard.hittime = 16
+guard.slidetime = 16
+airguard.velocity = -20,-2 
+airguard.hittime = 16
+fall.recover = 0
+fall.recovertime = 45
+guard.kill = 1
+guard.dist = 200
+palFX.time = 180
+palFX.mul = 140,60,60
+
+[state 4000, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200
+
+;[State 0, VarSet]
+;type = VarSet
+;trigger1 = movehit
+;trigger1 = numtarget(4000) 
+;var(0) = target(4000),id
+;ignorehitpause = 1
+
+[State 4000, Helper]
+type = Helper
+trigger1 = NumTarget(4000)
+trigger1 = movehit
+name = "Ranged Poison effect"
+ID = 4006
+stateno = 4006 
+pos = 0,0
+postype = p2
+facing = -1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[state 4000, end]
+type = changestate
+trigger1 = movecontact||movereversed
+value = 3055
+
+[State 4000, 4]
+type = DestroySelf
+trigger1 = movecontact||movereversed
+trigger2 = BackEdgeDist < -10
+trigger3 = time > 90
+
+;---------------------------------------------------------------------------------------
+[statedef 4001]
+type = S
+movetype = A
+physics = N
+anim = 3050
+sprpriority = 2
+
+[state 4000, scale]
+type = angledraw
+trigger1 = 1
+scale = 2,2
+ignorehitpause = 1
+
+[state 4001, velset]
+type = velset
+trigger1 = time = 0
+x = 38
+y = -1+(random%3)
+
+[state 4000, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200
+
+[state 4000, hitoverride]
+type = hitoverride
+trigger1 = 1
+attr = SCA, AP,AA,AT
+time = 1
+stateno = 3055
+ignorehitpause = 1
+persistent = 1
+
+[state 4000, nothitby]
+type = nothitby
+trigger1 = 1
+value = ,AA,AT
+ignorehitpause = 1
+
+[State 4000, 5] 
+type = hitdef
+trigger1 = !moveguarded
+persistent = 0
+attr = S, SP
+animtype  = back
+damage    = 25,3
+guardflag = MA
+getpower = 0
+givepower = 50
+hitflag = MAF
+pausetime = 2,6
+sparkno = -1
+sparkxy = -10,-60
+hitsound   = F5,1
+hitonce = 1
+id = 4000
+p2facing = 1
+p2sprpriority = 1
+guardsound = S120, 0
+ground.type = high
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -12,0
+air.velocity = -10,-4
+guard.velocity = -32           
+guard.hittime = 16
+guard.slidetime = 16
+airguard.velocity = -20,-2 
+airguard.hittime = 16
+fall.recover = 0
+fall.recovertime = 45
+guard.kill = 1
+guard.dist = 200
+palFX.time = 180
+palFX.mul = 140,60,60
+
+[state 4000, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = movehit
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
+ignorehitpause = 1
+
+[State 4000, Helper]
+type = Helper
+trigger1 = NumTarget(4000)
+trigger1 = movehit
+name = "Ranged Poison effect"
+ID = 4006
+stateno = 4006 
+pos = 0,0
+postype = p2
+facing = -1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[state 4000, end]
+type = changestate
+trigger1 = movecontact||movereversed
+value = 3055
+
+[State 4000, 4]
+type = DestroySelf
+trigger1 = movecontact||movereversed
+trigger2 = BackEdgeDist < -10
+trigger3 = time > 75
+
+;----------------------------------------------------------------------------
+[statedef 4002]
+type = S
+movetype = A
+physics = N
+anim = 3050
+sprpriority = 2
+
+[state 4000, scale]
+type = angledraw
+trigger1 = 1
+scale = 2,2
+ignorehitpause = 1
+
+[state 4001, velset]
+type = velset
+trigger1 = time = 0
+x = 44
+y = -1+(random%3)
+
+[state 4000, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200
+
+[state 4000, hitoverride]
+type = hitoverride
+trigger1 = 1
+attr = SCA, AP,AA,AT
+time = 1
+stateno = 3055
+ignorehitpause = 1
+persistent = 1
+
+[state 4000, nothitby]
+type = nothitby
+trigger1 = 1
+value = ,AA,AT
+ignorehitpause = 1
+
+[State 4000, 5] 
+type = hitdef
+trigger1 = !moveguarded
+persistent = 0
+attr = S, SP
+animtype  = back
+damage    = 25,3
+guardflag = MA
+getpower = 0
+givepower = 50
+hitflag = MAF
+pausetime = 2,6
+sparkno = -1
+sparkxy = -10,-60
+hitsound   = F5,1
+hitonce = 1
+id = 4000
+p2facing = 1
+p2sprpriority = 1
+guardsound = S120, 0
+ground.type = high
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -12,0
+air.velocity = -10,-4
+guard.velocity = -32           
+guard.hittime = 16
+guard.slidetime = 16
+airguard.velocity = -20,-2 
+airguard.hittime = 16
+fall.recover = 0
+fall.recovertime = 45
+guard.kill = 1
+guard.dist = 200
+palFX.time = 180
+palFX.mul = 140,60,60
+
+[state 4000, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = movehit
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
+ignorehitpause = 1
+
+[State 4000, Helper]
+type = Helper
+trigger1 = NumTarget(4000)
+trigger1 = movehit
+name = "Ranged Poison effect"
+ID = 4006
+stateno = 4006 
+pos = 0,0
+postype = p2
+facing = -1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[state 4000, end]
+type = changestate
+trigger1 = movecontact||movereversed
+value = 3055
+
+[State 4000, 4]
+type = DestroySelf
+trigger1 = movecontact||movereversed
+trigger2 = BackEdgeDist < -10
+trigger3 = time > 75
+
+
+;-------------------------------------------------------------------------------
+[statedef 4006]
+type = S
+Movetype = I
+physics = N
+velset = 0,0
+anim = 4006
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "var(0) = %d fvar(1) = %f  fvar(2) = %f"
+params = var(0), var(1), var(2)
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = prevstateno != 4000 && prevstateno != 4010
+trigger1 = !time
+var(0) = parent,var(0)
+
+[State 0, posset]
+type = posset
+trigger1 = time >= 1
+x = playerID(var(0)),pos x
+y = playerID(var(0)),pos y
+
+[state 4020, smoke]
+type = explod
+trigger1 = Random%15 = 0
+postype = p2
+anim = 4011
+scale = 1, 1
+sprpriority = 4
+removetime = -2
+pos = -50 + (random%100),playerID(var(0)),const(size.mid.pos.y) - 40 + (random%80)
+ownpal = 1
+
+[state 4020, smoke]
+type = explod
+trigger1 = Random%30 = 0
+postype = p2
+anim = 4011
+scale = 1, 1
+sprpriority = 4
+removetime = -2
+pos = -50+(random%100),playerID(var(0)),const(size.head.pos.y) - 40 + (random%80)
+ownpal = 1
+
+[State 0, LifeAdd]
+type = LifeAdd
+trigger1 = time%15=0
+trigger1 = playerID(var(0)),name != "SOR2"
+value = -ceil(playerID(var(0)),const(data.life)*0.002)  ;0.003
+kill = 0
+absolute = 1
+persistent = 5
+redirectID = var(0)
+[State 0, LifeAdd]
+type = LifeAdd
+trigger1 = time%15=0
+trigger1 = playerID(var(0)),name = "SOR2"
+value = -6
+kill = 1
+absolute = 1
+persistent = 5
+redirectID = var(0)
+[State 0, Run Energy Sap]
+type = powerAdd
+triggerall = time%15=0
+trigger1 = playerID(var(0)),stateno = 100;Running & jumping burns more oxygen
+trigger2 = playerID(var(0)),stateno =[700,799]
+value = ifelse(playerID(var(0)),vel x > 18,ifelse(playerID(var(0)), vel x > 27,-120,-60),-30)
+persistent = 5
+redirectID = var(0)
+[State 0, Run Approach Energy Sap]
+type = powerAdd
+triggerall = time%15=0
+trigger1 = (playerID(var(0)),stateno = [40,50]) && playerID(var(0)),vel x > 0
+trigger2 = playerID(var(0)),stateno = 20  && playerID(var(0)),vel x > 0
+value = -15 
+persistent = 5
+redirectID = var(0)
+;Rapid Bunny
+[State 0, Run Drain]
+type = powerAdd
+triggerall = time%15=0
+triggerall = playerID(var(0)),name = "Rapid Bunny"
+trigger1 = (playerID(var(0)),stateno = 1000) || (playerID(var(0)),stateno = 1010) || (playerID(var(0)),stateno = 1020)
+trigger2 = (playerID(var(0)),stateno = 1101) || (playerID(var(0)),stateno = 1111) || (playerID(var(0)),stateno = 1121)
+value = ifelse(playerID(var(0)),vel x > 18,ifelse(playerID(var(0)), vel x > 27,-120,-60),-30)
+persistent = 5
+redirectID = var(0)
+;Violet Bunny
+[State 0, Run Drain]
+type = powerAdd
+triggerall = time%15=0
+triggerall = playerID(var(0)),name = "Violet 'Tyla' Bunny"
+trigger1 = (playerID(var(0)),stateno = [1150,1155]) || (playerID(var(0)),stateno = 1170) 
+value = ifelse(playerID(var(0)),vel x > 18,ifelse(playerID(var(0)), vel x > 27,-120,-60),-30)
+persistent = 5
+redirectID = var(0)
+;Jumba Elephant
+[State 0, Run Drain]
+type = powerAdd
+triggerall = time%15=0
+triggerall = playerID(var(0)),name = "Jumba Elephant"
+trigger1 = (playerID(var(0)),stateno = 1000) || (playerID(var(0)),stateno = 1010) || (playerID(var(0)),stateno = 1020)
+value = ifelse(playerID(var(0)),vel x > 18,ifelse(playerID(var(0)), vel x > 27,-120,-60),-30)
+persistent = 5
+redirectID = var(0)
+[state 4005, 1]
+type = destroyself
+trigger1 = time >= 480
+trigger2 = roundstate = 3
+trigger3 = !playerID(var(0)),alive
+trigger3 = numenemy < 2 && time
+trigger4 = time > 24 && root,movetype = H && root,stateno != [120,159]
+
+[statedef 4050]
+type = S
+movetype = A
+physics = N
+velset = 0,0
+ctrl = 0
+sprpriority = 3
+
+
+[state 4001, posset]
+type = posset
+trigger1 = time = 0
+y = 0
+
+[state 4001, anim]
+type = changeanim
+trigger1 = time = 0
+value = 4010
+
+[State 4001, 5] 
+type = hitdef
+trigger1 = 1
+persistent = 0
+attr = S, SP
+animtype  = Hard
+damage    = 0
+guardflag = 
+hitflag = MAFD
+pausetime = 0,12
+sparkno = -1
+sparkxy = -10,-60
+p2stateno = 4020
+ground.type = high
+ground.slidetime = 12
+ground.hittime  = 12
+ground.velocity = 60,-25
+air.velocity = 60,-25
+down.velocity = 0,0
+down.hittime = 16
+id = 4000
+hitonce = 1
+fall = 1
+fall.recover = 0
+palFX.time = 180
+palFX.mul = 140,60,60
+
+;Poison Trigger
+[State 0, VarSet]
+type = VarSet
+trigger1 = movehit
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
+ignorehitpause = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = NumTarget(4000)
+trigger1 = movehit
+name = "Melee Poison effect"
+ID = 4006
+stateno = 4056
+pos = 0,0
+postype = p2
+facing = -1
+ownpal = 1
+ignorehitpause = 1
+;----
+
+[state 4001, nothitby]
+type = nothitby
+trigger1 = 1
+value = ,AA,AT
+ignorehitpause = 1
+[state 4000, hitoverride]
+type = hitoverride
+attr = SCA, AP
+trigger1 = 1
+time = 1
+stateno = 4005
+ignorehitpause = 1
+
+[State 4001, 4]
+type = DestroySelf
+trigger1 = movecontact || movereversed 
+
+[State 4001, 4]
+type = DestroySelf
+trigger1 = time > 10
+;----------------------------------------------------------------------------------------------
+[statedef 4056]
+type = S
+Movetype = I
+physics = N
+velset = 0,0
+anim = 4006
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "var(0) = %d fvar(1) = %f  fvar(2) = %f"
+params = var(0), var(1), var(2)
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = prevstateno != 4000 && prevstateno != 4010
+trigger1 = !time
+var(0) = parent,var(0)
+
+[State 0, posset]
+type = posset
+trigger1 = time >= 1
+x = playerID(var(0)),pos x
+y = playerID(var(0)),pos y
+
+[state 4020, smoke]
+type = explod
+trigger1 = Random%15 = 0
+postype = p2
+anim = 2052
+scale = 1, 1
+sprpriority = 4
+removetime = -2
+pos = -50 + (random%100),playerID(var(0)),const(size.mid.pos.y) - 40 + (random%80)
+ownpal = 1
+
+[state 4020, smoke]
+type = explod
+trigger1 = Random%30 = 0
+postype = p2
+anim = 2052
+scale = 1, 1
+sprpriority = 4
+removetime = -2
+pos = -50+(random%100),playerID(var(0)),const(size.head.pos.y) - 40 + (random%80)
+ownpal = 1
+
+[State 0, LifeAdd]
+type = LifeAdd
+trigger1 = time%15=0
+trigger1 = playerID(var(0)),name != "SOR2"
+value = -ceil(playerID(var(0)),const(data.life)*0.003)  ;0.009
+kill = 0
+absolute = 1
+persistent = 5
+redirectID = var(0)
+[State 0, LifeAdd]
+type = LifeAdd
+trigger1 = time%15=0
+trigger1 = playerID(var(0)),name = "SOR2"
+value = -24
+kill = 1
+absolute = 1
+persistent = 5
+redirectID = var(0)
+[State 0, Run Damage]
+type = powerAdd
+triggerall = time%15=0
+trigger1 = playerID(var(0)),stateno = 100;Running & jumping burns more oxygen
+value = ifelse(playerID(var(0)),vel x > 18,ifelse(playerID(var(0)), vel x > 27,-120,-60),-30)
+persistent = 5
+redirectID = var(0)
+[State 0, Run Damage]
+type = powerAdd
+triggerall = time%15=0
+trigger1 = (playerID(var(0)),stateno = [40,50]) && playerID(var(0)),vel x > 0
+trigger2 = playerID(var(0)),stateno = 20  && playerID(var(0)),vel x > 0
+value = -15
+persistent = 5
+redirectID = var(0)
+;============================================================
+;Character Specific - Energy penalty for running in poison gas
+;============================================================
+;Rapid Bunny
+[State 0, Run Drain]
+type = powerAdd
+triggerall = time%15=0
+triggerall = playerID(var(0)),name = "Rapid Bunny"
+trigger1 = (playerID(var(0)),stateno = 1000) || (playerID(var(0)),stateno = 1010) || (playerID(var(0)),stateno = 1020)
+trigger2 = (playerID(var(0)),stateno = 1101) || (playerID(var(0)),stateno = 1111) || (playerID(var(0)),stateno = 1121)
+value = ifelse(playerID(var(0)),vel x > 18,ifelse(playerID(var(0)), vel x > 27,-120,-60),-30)
+persistent = 5
+redirectID = var(0)
+;Violet Bunny
+[State 0, Run Drain]
+type = powerAdd
+triggerall = time%15=0
+triggerall = playerID(var(0)),name = "Violet 'Tyla' Bunny"
+trigger1 = (playerID(var(0)),stateno = [1150,1155]) || (playerID(var(0)),stateno = 1170) 
+value = ifelse(playerID(var(0)),vel x > 18,ifelse(playerID(var(0)), vel x > 27,-120,-60),-30)
+persistent = 5
+redirectID = var(0)
+;Jumba Elephant
+[State 0, Run Drain]
+type = powerAdd
+triggerall = time%15=0
+triggerall = playerID(var(0)),name = "Jumba Elephant"
+trigger1 = (playerID(var(0)),stateno = 1000) || (playerID(var(0)),stateno = 1010) || (playerID(var(0)),stateno = 1020)
+value = ifelse(playerID(var(0)),vel x > 18,ifelse(playerID(var(0)), vel x > 27,-120,-60),-30)
+persistent = 5
+redirectID = var(0)
+[state 4005, 1]
+type = destroyself
+trigger1 = time >= 480
+trigger2 = roundstate = 3
+trigger3 = !playerID(var(0)),alive
+trigger3 = numenemy < 2 && time
+trigger4 = root,statetype = L  || root,gethitvar(isbound) || root,hitfall = 1

@@ -1,0 +1,101 @@
+;-------------------------------------------------------------------------------
+[Characters]
+Jiggly, stages/Epoch_park.def, order = 3
+Enorma, stages/Dieselrust_Ranch.def, order = 2
+Bertha, stages/TAW_Ring.def, music=sound/Spontaneous_Bootay.mp3, order = 3
+Aroma, stages/Amazing_Sweet_Shoppes.def, order = 2
+Makuyama, stages/Tatsu/bamboo2014.def, order = 3
+Katrina, stages/SEDistrict.def, order = 3
+Twiggi, stages/Frostdark_Forest.def, order = 3
+Violet, stages/Sakura2014.def, order = 3
+Jumbo2, stages/Jumbos_Lair.def, music=sound/XMen Children of the Atom Juggernaut Stage OST Super HQ.mp3, order = 5
+Rapid, stages/Epoch_park.def, order = 3
+Andy, stages/Dieselrust_Ranch.def, Order = 4
+Julian, stages/Jen_Eric2.def, order = 4
+Pastilla, stages/Tatsu/Satsui2014.def, order = 4
+Akai, stages/Tatsu/bamboo2014.def, order = 4
+Lardo,  stages/Rous_Alley.def, order = 4
+Zafta, stages/SandyShore_Drive.def, order = 2
+Jumba, stages/Sakura2014.def, order = 5
+Texas, stages/Dieselrust_Ranch.def, order = 2
+randomselect
+
+;-------------------------------------------------------------------------------
+[ExtraStages]
+ ;Put extra stages here. They will be available in modes that allow selecting
+ ;stage manually. For example, you can insert "stages/mybg.def".
+ ;
+ ;Optional parameters may follow on the same line, separated by commas.
+ ;Each parameter has the form:
+ ;    paramname = paramvalue
+ ;where paramname is the name of the parameter type, and paramvalue is the value
+ ;to assign that parameter. The optional parameters are:
+ ;
+ ; - music<roundno>
+ ;   IKEMEN feature: Set the paramvalue to the music file path that should be
+ ;   used at the start of round. Music volume, loopstart and loopend values can
+ ;   follow, separated by spaces. Tracks will be played randomly from the
+ ;   available pool if multiple parameters have been assigned or bgmusic is
+ ;   present in the stage DEF file. Setting optional <roundno> (typed as number)
+ ;   decides round on which the music will be played (defaults to 1 if omitted)
+ ;
+ ; - musiclife
+ ;   IKEMEN feature: Set the paramvalue to the music file path that should be
+ ;   used when player's controlled character has (by default) less then 30% life
+ ;   during deciding round (only affects side that is at risk of being
+ ;   defeated). Further adjustments available via stage DEF file. Music volume,
+ ;   loopstart and loopend values can follow, separated by spaces.  Tracks will
+ ;   be played randomly from the available pool if multiple parameters have been
+ ;   assigned or bgmusic.life is present in the stage DEF file.
+ ;
+ ; - musicvictory
+ ;   IKEMEN feature: Set the paramvalue to the music file path that should kick
+ ;   in right after the final round K.O. and continue throughout the victory
+ ;   screen. Music volume, loopstart and loopend frame values can follow,
+ ;   separated by spaces. Tracks will be played randomly from the available pool
+ ;   if multiple parameters have been assigned or bgmusic.victory is present in
+ ;   the stage DEF file.
+ ;
+ ; - order
+ ;   IKEMEN feature: Set the paramvalue to the ordering priority to give the
+ ;   stage in Arcade and Time Attack modes. If there is at least 1 stage with
+ ;   assigned order, facing opponent with the exact order paramvalue will result
+ ;   in stage being randomly chosen from stages with the matching order. Stages
+ ;   can have multiple order parameters assigned at the same time.
+ ;
+ ; - unlock
+ ;   IKEMEN feature: paramvalue is executed as Lua code condition, right after
+ ;   new game mode is initiated and upon returning to main menu. If it evaluates
+ ;   to boolean 'true' the stage will become manually selectable. On 'false' it
+ ;   will be hidden. Due to parameters syntax, 'unlock' has to be the very last
+ ;   parameter used in line (everything that follows is treated as a pure Lua
+ ;   code). Default: true.
+ ;   https://github.com/K4thos/Ikemen_GO/wiki/Miscellaneous-Info#lua_unlock
+ ;
+ ;Examples:
+ ; stages/mybg.def, music=sound/song.mp3, music=sound/song2.mp3
+ ; stages/mybg.def, order=3
+ ;
+ ;Insert your stages below.
+
+stages/Hollowgram Room.def
+;stages/stage0.def
+stages/Epoch_park.def
+stages/Dieselrust_Ranch.def
+stages/TAW_Ring.def
+stages/Amazing_Sweet_Shoppes.def
+stages/SEDistrict.def
+stages/Rous_Alley.def
+stages/SandyShore_Drive.def
+stages/Jumbos_Lair.def
+stages/tatsu/Suzaku2014.def
+stages/tatsu/jet2014.def
+stages/tatsu/jet-night2014RainV1.def
+stages/tatsu/jet-night2014RainV2.def
+stages/tatsu/beach2014.def
+stages/Pantalla_Verde.def
+
+;-------------------------------------------------------------------------------
+[Options]
+ ;Here you set the maximum number of matches to fight before game ends in arcade
+... (129 lines left)
