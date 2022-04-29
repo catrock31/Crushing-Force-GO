@@ -1,0 +1,307 @@
+[Info]
+ ;Name of the stage.
+name = "Rous Alley"
+displayname = "Rous Alley" ;Name to display
+versiondate = 06,22,2017    
+mugenversion = 1.0         
+author = "Vdisco"        
+
+;--------------------------------------------------------
+[Camera]
+ ;Camera starting position: Usually 0 for both
+startx = 0
+starty = 0
+boundleft = -585;-830
+boundright = 585
+boundhigh = -800
+boundlow = 0
+verticalfollow = 1.5 ;.85
+floortension = 360
+tension = 180
+overdrawhigh = 120
+overdrawlow = 120
+cuthigh = 55
+cutlow = 25
+startzoom = 1
+zoomin = 0.9
+zoomout = 0.65
+
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+ ;Player 1 starting coordinates.
+
+p1startx = -280          ;Starting x coordinates
+p1starty = 0            ;Starting y coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 280
+p2starty = 0
+p2facing = -1
+
+;--- Player 3 ---
+p3startx = -400
+p3starty = 0
+p3facing = 1
+
+;--- Player 4 ---
+p4startx = 400
+p4starty = 0
+p4facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -4000 ;Left bound (x-movement)
+rightbound =  4000 ;Right bound
+
+;--------------------------------------------------------
+[Bound]
+ ;Distance from left/right edge of screen that player can move to
+ ;Typically 15
+screenleft = 58    ;Dist from left of screen that player can move to
+screenright = 58   ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 660
+autoturn = 1
+resetBG = 1
+localcoord = 1280, 720
+
+ ;Horizontal and vertical scaling factor for drawing.
+xscale = 2.2
+yscale = 2.2
+
+;--------------------------------------------------------
+[Shadow]
+ ;This controls the darkness of the shadow. Valid values range
+ ;from 0 (lightest) to 256 (darkest). Defaults to 128 if omitted.
+intensity = 194
+
+ ;This is the shadow color given in r,g,b. Valid values for each
+ ;range from 0 (lightest) to 255 (darkest).
+ ;Defaults to 0,0,0 if omitted.
+ ;intensity and color's effects add up to give the final shadow
+ ;result.
+color = 0,0,0
+
+ ;This is the scale factor of the shadow. Use a big scale factor
+ ;to make the shadow longer. You can use a NEGATIVE scale factor
+ ;to make the shadow fall INTO the screen.
+ ;Defaults to 0.4 if omitted.
+yscale = .2
+
+ ;This parameter lets you set the range over which the shadow is
+ ;visible. The first value is the high level, and the second is
+ ;the middle level. Both represent y-coordinates of the player.
+ ;A shadow is invisible if the player is above the high level,
+ ;and fully visible if below the middle level. The shadow is
+ ;faded in between the two levels. This gives an effect of the
+ ;shadow fading away as the player gets farther away from the
+ ;ground. If omitted, defaults to no level effects (shadow is
+ ;always fully visible).
+fade.range = 0,0
+
+;--------------------------------------------------------
+[Reflection]
+ ;Intensity of reflection (from 0 to 256). Set to 0 to have no
+ ;reflection. Defaults to 0.
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+ ;Put a filename for a MOD, MP3 or MIDI here, or just leave it
+ ;blank if you don't want music. If an invalid filename is
+ ;given, then no music will play. To play CD audio, put
+ ;the track number followed by ".da". Using a track number of
+ ;0 will play a random audio track. For example, to play
+ ;track 3 from a music CD, use:
+ ;  bgmusic = 3.da
+bgmusic = sound/Anthony Rother - Redlight Combat ( Redlight District 1998 ).mp3
+;music by Anthony Rother
+;bgmloopstart = 45
+;bgmloopend = <sample number>
+
+ ;Adjust the volume. 100 is for 100%.
+bgmvolume = 90
+
+;========================================================
+;--------------------------------------------------------
+; Background definition
+; ***
+;-------------------------------------
+; [BG x]
+; type = ?       "Normal"/"Parallax"  (def: "normal")
+; spriteno = ?, ? Sprite group and number: groupno, imgno  (req'd)
+; start = ?, ?   Starting location (integer)  (def: 0, 0)
+; delta = ?, ?   Change in location per camera unit moved (float)  (def: 1,1)
+; trans = ?      Transparency settings: "none"/"add"/"add1"/"sub"/"addalpha" (def: "none")
+; alpha = ?, ?   (only for trans=addalpha) Source,dest alpha (def: 256,0)
+; mask = ?       Masking (int): 0 - off, 1 - on  (def: 0)
+; velocity = ?, ? Velocity: x, y (float): speed background moves (def: 0, 0)
+; tile = ?, ?    Tiling: xtile, ytile (int): 0 - off, 1 - infinite,
+;                        >1 - tile that number of times  (def: 0, 0) - only for Normal BG
+; tilespacing = ?, ? Tiling: x, y (int) : space between tiles (def: 0, 0)
+;  Parallax-only:
+; xscale = ?, ?    Top xscale, bottom xscale (float)
+; width = ?, ?     Top width, bottom width (int)  (use either this or above, but not both)
+; yscalestart = ?  Starting y-scale (float, in percent)  (def: 100)
+; yscaledelta = ?  Change in y-scale per unit (float, in percent)  (def: 0)
+;-------------------------------------
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+ ;Filename of sprite data
+spr = Rous Alley.sff
+debugbg = 0
+
+
+;----------
+
+;[BG sky]
+;type  = normal
+;spriteno = 0,1
+;start = 0, 1
+;makes BG move
+;delta = 0.6, 1  
+;mask = 1
+;tile = 
+;velocity =
+
+;----------
+
+;[BG bldgs]
+;type  = normal
+;spriteno = 0,2
+;start = 80, 4
+;makes BG move
+;delta = 0.7, 1  
+;mask = 1
+;tile = 
+;velocity =
+
+;----------
+
+;[BG trees tall]
+;type  = normal
+;spriteno = 0,3
+;start = 0, -50
+;makes BG move
+;delta = .8, 1 
+;mask = 1
+;tile = 
+;velocity =
+
+
+;----------
+
+;[BG trees low]
+;type  = normal
+;spriteno = 0,6
+;start = 0, -50
+;makes BG move
+;delta = .9, 1 
+;mask = 1
+;tile = 
+;velocity =
+
+;----------
+[BG main] 
+type  = normal
+spriteno = 0, 1
+start = 0, 39
+;makes BG move
+delta = 1.1, 1  
+;mask = 1
+;tile = 
+;velocity =
+
+;----------
+
+;[BG glow]
+;type  = normal
+;spriteno = 0,0
+;start = 0, 39
+;makes BG move
+;delta =  1.1, 1  
+;mask = 1
+;trans = add
+;tile = 
+;velocity =
+
+;----------
+
+;[BG glow2]
+;type  = normal
+;spriteno = 0,2
+;start = 0, 39
+;makes BG move
+;delta =  1.1, 1  
+;mask = 1
+;trans = add
+;tile = 
+;velocity =
+
+;----------
+
+;[BG sm gazebo] 
+;type  = normal
+;spriteno = 0,4
+;start = 0, -50
+;makes BG move
+;delta = 1, 1  
+;mask = 1
+;----------
+
+;[BG food truck] 
+;type  = normal
+;spriteno = 0,7
+;start = 0, -50
+;makes BG move
+;delta = 1.1, 1  
+;mask = 1
+;tile = 
+;velocity =
+
+;----------
+
+;[BG fore tress] 
+;type  = normal
+;spriteno = 0,8
+;start = 0, -50
+;makes BG move
+;delta = 1.1, 1  
+;mask = 1
+;tile = 
+;velocity =
+
+;----------
+
+;[BG Wall]
+;type  = normal
+;spriteno = 1,0
+;start = 0, 11
+;delta = .8, .75
+;mask = 1
+;tile = 1, 0
+
+;----------
+;[BG Pillar Bottom]
+;type  = normal
+;spriteno = 15,0
+;start = 0, 180
+;delta = .8, .75
+;mask = 1
+;tile = 1, 0
+
+;----------
+;[BG Pillar Top]
+;type  = normal
+;spriteno = 15,1
+;start = 0, 11
+;delta = .8, .75
+;mask = 1
+;tile = 1, 0

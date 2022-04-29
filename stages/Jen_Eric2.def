@@ -1,0 +1,338 @@
+; Definition of Julian's stage
+; *** denotes values you should change/check for each stage.
+; The term "background" is used to mean both backgrounds and foregrounds.
+
+;--------------------------------------------------------
+[Info]
+ ;Name of the stage.
+name = "Jen Eric Catwalk"
+displayname = "Jen Eric Catwalk" ;Name to display
+versiondate = 04,21,2020    ;Version date of stage (MM,DD,YYYY or X.XX)
+mugenversion = 1.1          ;Version of M.U.G.E.N stage works on (X.XX)
+author = "Kazecat"         ;Stage author name
+;Edited by Old Gamer, Kazecat
+;--------------------------------------------------------
+[Camera]
+ ;Camera starting position: Usually 0 for both
+startx = 0
+starty = 0
+
+boundleft = -625
+boundright = 630
+
+boundhigh = -1600
+boundlow = 0
+
+verticalfollow = .6
+
+floortension = 060
+
+tension = 90
+
+overdrawhigh = 2000
+overdrawlow = 0
+
+startzoom = 1
+zoomin = 0.9 ;1
+zoomout = 0.65
+cuthigh = 0
+cutlow = 25
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+ ;Player 1 starting coordinates.
+ ;p1startx is typically -70 and p2startx is 70.
+ ;p1starty should be 0.
+p1startx = -280          ;Starting x coordinates
+p1starty = 0            ;Starting y coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 280
+p2starty = 0
+p2facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -4000 ;Left bound (x-movement)
+rightbound =  4000 ;Right bound
+
+;--------------------------------------------------------
+[Bound]
+ ;Distance from left/right edge of screen that player can move to
+ ;Typically 15
+screenleft = 15    ;Dist from left of screen that player can move to
+screenright = 15   ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+ ;"Ground" level where players stand at, measured in pixels from the
+ ;top of the screen.
+ ;Adjust this value to move the ground level up/down in the screen.
+ ;***
+zoffset = 680
+
+ ;Leave this at 1. It makes the players face each other
+autoturn = 1
+
+ ;Set the following to 1 to have the background be reset between
+ ;rounds.
+resetBG = 0
+
+ ;Width and height of the local coordinate space of the stage.
+localcoord = 1280, 720
+
+ ;Horizontal and vertical scaling factor for drawing.
+xscale = 2.15
+yscale = 2.15
+
+;--------------------------------------------------------
+[Shadow]
+ ;This controls the darkness of the shadow. Valid values range
+ ;from 0 (lightest) to 256 (darkest). Defaults to 128 if omitted.
+intensity = 64
+
+ ;This is the shadow color given in r,g,b. Valid values for each
+ ;range from 0 (lightest) to 255 (darkest).
+ ;Defaults to 0,0,0 if omitted.
+ ;intensity and color's effects add up to give the final shadow
+ ;result.
+color = 0,0,0
+
+ ;This is the scale factor of the shadow. Use a big scale factor
+ ;to make the shadow longer. You can use a NEGATIVE scale factor
+ ;to make the shadow fall INTO the screen.
+ ;Defaults to 0.4 if omitted.
+yscale = 0.4
+
+ ;This parameter lets you set the range over which the shadow is
+ ;visible. The first value is the high level, and the second is
+ ;the middle level. Both represent y-coordinates of the player.
+ ;A shadow is invisible if the player is above the high level,
+ ;and fully visible if below the middle level. The shadow is
+ ;faded in between the two levels. This gives an effect of the
+ ;shadow fading away as the player gets farther away from the
+ ;ground. If omitted, defaults to no level effects (shadow is
+ ;always fully visible).
+fade.range = -400,-100
+
+;--------------------------------------------------------
+[Reflection]
+ ;Intensity of reflection (from 0 to 256). Set to 0 to have no
+ ;reflection. Defaults to 0.
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+ ;Put a filename for a MOD, MP3 or MIDI here, or just leave it
+ ;blank if you don't want music. If an invalid filename is
+ ;given, then no music will play. To play CD audio, put
+ ;the track number followed by ".da". Using a track number of
+ ;0 will play a random audio track. For example, to play
+ ;track 3 from a music CD, use:
+ ;  bgmusic = 3.da
+bgmusic = sound/Julian_Stage_Music.mp3
+
+;bgmloopstart = <sample number>
+;bgmloopend = <sample number>
+
+ ;Adjust the volume. 100 is for 100%.
+bgmvolume = 100
+
+;========================================================
+;--------------------------------------------------------
+; Background definition
+; ***
+;-------------------------------------
+; [BG x]
+; type = ?       "Normal"/"Parallax"  (def: "normal")
+; spriteno = ?, ? Sprite group and number: groupno, imgno  (req'd)
+; start = ?, ?   Starting location (integer)  (def: 0, 0)
+; delta = ?, ?   Change in location per camera unit moved (float)  (def: 1,1)
+; trans = ?      Transparency settings: "none"/"add"/"add1"/"sub"/"addalpha" (def: "none")
+; alpha = ?, ?   (only for trans=addalpha) Source,dest alpha (def: 256,0)
+; mask = ?       Masking (int): 0 - off, 1 - on  (def: 0)
+; velocity = ?, ? Velocity: x, y (float): speed background moves (def: 0, 0)
+; tile = ?, ?    Tiling: xtile, ytile (int): 0 - off, 1 - infinite,
+;                        >1 - tile that number of times  (def: 0, 0) - only for Normal BG
+; tilespacing = ?, ? Tiling: x, y (int) : space between tiles (def: 0, 0)
+;  Parallax-only:
+; xscale = ?, ?    Top xscale, bottom xscale (float)
+; width = ?, ?     Top width, bottom width (int)  (use either this or above, but not both)
+; yscalestart = ?  Starting y-scale (float, in percent)  (def: 100)
+; yscaledelta = ?  Change in y-scale per unit (float, in percent)  (def: 0)
+;-------------------------------------
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+spr = jen_eric2.sff
+debugbg = 0
+
+[BG Sky]
+type  = normal
+spriteno = 0, 0
+start = 45,360
+delta = 0.8,0.8
+mask  = 0
+tile  = 0, 0
+tilespacing = 0,0
+
+[BG Buildings outside]
+type = Normal
+spriteno = 0,1
+layerno = 0
+start = 45,360
+delta = 0.9,0.9
+mask = 1
+
+[BG Inside]
+type = normal
+spriteno = 0,2
+start = 45,360
+delta = 1,1
+mask = 1
+
+[bg Montana Walk]
+type = anim
+actionno = 1
+start = -800,210
+id = 1
+
+[BG Inside]
+type = normal
+spriteno = 0,3
+start = 45,360
+delta = 1,1
+mask = 1
+
+;------------------------------------------
+;Background controls goes here
+;------------------------------------------
+
+[bgctrldef Models Pace pace]
+looptime = 5400
+ctrlid = 1
+
+[BGCTRL walk right]
+type = velset
+time = 0
+x = 0.85
+y = 0.042
+
+[BGCTRL walk back]
+type = velset
+time = 900
+x = -0.85
+y = -0.042
+
+[BGCTRL walk right]
+type = velset
+time = 1800
+x = 0.85
+y = 0.042
+
+[BGCTRL walk back]
+type = velset
+time = 2700
+x = -0.85
+y = -0.042
+
+[BGCTRL walk right]
+type = velset
+time = 3600
+x = 0.85
+y = 0.042
+
+[BGCTRL walk back]
+type = velset
+time = 4500
+x = -0.85
+y = -0.042
+
+[BGCTRL turnaround]
+type = anim
+time = 0
+value = 1
+
+[BGCTRL turnaround]
+type = anim
+time = 900
+value = 2
+
+[BGCTRL turnaround]
+type = anim
+time = 1800
+value = 5
+
+[BGCTRL turnaround]
+type = anim
+time = 2700
+value = 6
+
+[BGCTRL turnaround]
+type = anim
+time = 3600
+value = 3
+
+[BGCTRL turnaround]
+type = anim
+time = 4500
+value = 4
+
+;---------------------------------------
+;animation codes goes here
+;---------------------------------------
+
+; Montanta Walk
+[begin action 1]
+loopstart
+1,0, 0,0, 16
+1,1, 0,0, 16
+1,2, 0,0, 16
+1,1, 0,0, 16
+
+; Montana Walk back
+[begin action 2]
+loopstart
+1,3, 0,0, 16
+1,4, 0,0, 16
+1,5, 0,0, 16
+1,4, 0,0, 16
+
+;Cindy Walk
+[begin action 3]
+loopstart
+2,0, 0,0, 16
+2,1, 0,0, 16
+2,2, 0,0, 16
+2,1, 0,0, 16
+
+;Cindy Walk back
+[begin action 4]
+loopstart
+2,3, 0,0, 16
+2,4, 0,0, 16
+2,5, 0,0, 16
+2,4, 0,0, 16
+
+;Rhino Walk back
+[begin action 5]
+loopstart
+3,0, 0,0, 16
+3,1, 0,0, 16
+3,2, 0,0, 16
+3,1, 0,0, 16
+
+;Rhino Walk back
+[begin action 6]
+loopstart
+3,0, 0,0, 16,H
+3,1, 0,0, 16,H
+3,2, 0,0, 16,H
+3,1, 0,0, 16,H
+
+; Blank
+[Begin Action 9]
+-1,0, 0,0, 10

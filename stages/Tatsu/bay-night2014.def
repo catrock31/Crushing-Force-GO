@@ -1,0 +1,832 @@
+
+[Info]
+	name="Bay2014"
+	displayname="Bay Night2014"
+	versiondate=12,12,2014
+	mugenversion=1.1
+
+[Camera]
+	startx=0
+	starty=0
+	boundleft=-180
+	boundright=180
+	boundhigh=-200
+	boundlow=0
+	verticalfollow=1
+
+	floortension=150
+	tension=100 ;;50
+
+	;;--- * v1.1 (zoom) *---
+;;	cuthigh=30 ;;c_hi
+	cutlow=10 ;;c_lo
+	;;---
+	overdrawhigh=5
+	overdrawlow=5
+	;;---
+	tensionhigh=85
+	tensionlow=25
+	startzoom=1
+	zoomout=0.85 ;;c_zo
+	zoomin=1.15 ;;c_zi
+	;;--- * v1.1 (zoom) *---
+
+[PlayerInfo]
+	p1startx=-70
+	p1starty=0
+	p1startz=0
+	p1facing=1
+
+	p2startx=70
+	p2starty=0
+	p2startz=0
+	p2facing=-1
+
+	leftbound=-1000
+	rightbound=1000
+	topbound=0
+	botbound=0
+
+[Scaling]
+	topz=0
+	botz=50
+	topscale=1
+	botscale=1.2
+
+[Bound]
+	screenleft=15
+	screenright=15
+
+[StageInfo]
+	zoffset=215
+	autoturn=1
+	resetBG=0
+	localcoord=320,240
+
+[Shadow]
+	intensity=196
+	color=0,0,0
+	yscale=0.05
+	fade.range=-100,0
+[Reflection]
+	intensity=0
+
+[Music]
+	bgmusic = Sound/20 Spin on the Bridge.mp3
+	;bgmusic=stages/tatsu/Jenet.mp3
+	bgvolume=0
+
+;-----------------
+[BGdef]
+	spr=bay-night2014.sff
+	debugbg=0
+
+
+;-----------------
+;-----------------
+
+
+;;--- sky v2
+[bg 0]
+	type=normal
+	spriteno=1,2
+	id=10
+	start=60,-8
+	delta=0.2,0.2
+	zoomdelta=0.2
+	mask=0
+	tile=1,1
+	tilespacing=0,0
+	velocity=0.025,0
+	;---
+;op;	scalestart=2,1
+
+
+
+
+
+
+
+
+;--- sun_shadow
+[bg 0]
+	type=anim
+	actionno=50
+	id=10
+	start=60,198
+	delta=0.2,0.2
+	zoomdelta=0.2
+	mask=1
+[bg 0]
+	type=anim
+	actionno=51
+	id=10
+	start=60,198
+	delta=0.2,0.2
+	zoomdelta=0.2
+	mask=1
+[bg 0]
+	type=anim
+	actionno=52
+	id=10
+	start=60,198
+	delta=0.2,0.2
+	zoomdelta=0.2
+	mask=1
+
+;---
+[Begin Action 50]
+5,1,0,0,5
+5,1,0,0,5,,as206d050
+5,1,0,0,5,,as156d100
+5,1,0,0,5,,as106d150
+5,1,0,0,5,,as056d200
+5,1,0,0,5,,as006d250
+5,1,0,0,5,,as056d200
+5,1,0,0,5,,as106d150
+5,1,0,0,5,,as156d100
+5,1,0,0,5,,as206d050
+[Begin Action 51]
+5,2,0,0,5,,as106d150
+5,2,0,0,5,,as156d100
+5,2,0,0,5,,as206d050
+5,2,0,0,5
+5,2,0,0,5,,as206d050
+5,2,0,0,5,,as156d100
+5,2,0,0,5,,as106d150
+5,2,0,0,5,,as056d200
+5,2,0,0,5,,as006d250
+5,2,0,0,5,,as056d200
+[Begin Action 52]
+5,3,0,0,5,,as056d200
+5,3,0,0,5,,as006d250
+5,3,0,0,5,,as056d200
+5,3,0,0,5,,as106d150
+5,3,0,0,5,,as156d100
+5,3,0,0,5,,as206d050
+5,3,0,0,5
+5,3,0,0,5,,as206d050
+5,3,0,0,5,,as156d100
+5,3,0,0,5,,as106d150
+
+
+;--- city
+[bg 0]
+	type=normal
+	spriteno=3,1
+	id=10
+	start=-100,191
+	delta=0.2,0.2
+	zoomdelta=0.2
+	mask=1
+
+
+;---------------
+; bg y pos revise
+;---------------
+[bgctrldef 1]
+looptime=-1
+ctrlid=10
+
+[bgctrl 0]
+	type=posadd
+	time=0
+	y=-28
+
+
+
+
+
+
+;---------------
+;--- yashi / palm
+[bg 0]
+	type=anim
+	actionno=90
+	id=20
+	start=80,98
+	delta=0.25,0.25
+	zoomdelta=0.25
+	mask=1
+	tile=2,0
+	tilespacing=100,0
+	sin.x=1,120
+;---
+[Begin Action 90]
+9,1,0,0,10
+9,2,0,0,10
+
+
+
+
+
+
+
+;---------------
+;--- frame
+[bg 0]
+	type=normal
+	spriteno=4,1
+	id=20
+	start=75,40
+	delta=0.25,0.25
+	zoomdelta=0.25
+	mask=1
+[bg 0]
+	type=normal
+	spriteno=4,1
+	id=20
+	start=0,40
+	delta=0.25,0.25
+	zoomdelta=0.25
+	mask=1
+
+
+
+
+
+
+
+;------------
+;--- floor
+[bg 0]
+	type=normal
+	spriteno=6,1
+	id=100
+	start=0,169
+	delta=0.3,0.3
+	zoomdelta=0.3
+	mask=1
+	tile=1,0
+;;;	tilespacing=100,0
+
+[bg 0]
+	type=normal
+	spriteno=6,2
+	id=100
+	start=0,170
+	delta=0.31,0.31 ;;[+0.01]
+	zoomdelta=0.31
+;;;	mask=1
+	tile=1,0
+;;;	tilespacing=100,0
+
+[bg 0]
+	type=normal
+	spriteno=6,3
+	id=101
+	start=0,172
+	delta=0.33,0.33 ;;[+0.02]
+	zoomdelta=0.33
+;;;	mask=1
+	tile=1,0
+;;;	tilespacing=106,0
+
+[bg 0]
+	type=normal
+	spriteno=6,4
+	id=102
+	start=0,174
+	delta=0.37,0.37 ;;[+0.04]
+	zoomdelta=0.37
+;;;	mask=1
+	tile=1,0
+;;;	tilespacing=118,0
+
+[bg 0]
+	type=normal
+	spriteno=6,5
+	id=103
+	start=0,178
+	delta=0.45,0.45 ;;[+0.08]
+	zoomdelta=0.45
+;;;	mask=1
+	tile=1,0
+;;;	tilespacing=142,0
+
+[bg 0]
+	type=normal
+	spriteno=6,6
+	id=104
+	start=0,186
+	delta=0.61,0.61 ;;[+0.16]
+	zoomdelta=0.61
+;;;	mask=1
+	tile=1,0
+;;;	tilespacing=190,0
+
+[bg 0]
+	type=normal
+	spriteno=6,7
+	id=105
+	start=0,202
+	delta=0.93,0.93;;[+0.32]
+	zoomdelta=0.93
+;;;	mask=1
+	tile=1,0
+;;;	tilespacing=286,0
+
+
+
+
+
+
+
+;------------
+;--- lines_1/6
+[bg 0]
+	type=anim
+	actionno=100
+	id=100
+	start=-1,170
+	delta=0.31,0.31 ;;[+0.01]
+	zoomdelta=0.31
+	mask=1
+	tile=1,0
+	tilespacing=100,0
+
+;--- lines_2/6
+[bg 0]
+	type=anim
+	actionno=101
+	id=101
+	start=-2,172
+	delta=0.33,0.33 ;;[+0.02]
+	zoomdelta=0.33
+	mask=1
+	tile=1,0
+	tilespacing=106,0
+
+;--- lines_3/6
+[bg 0]
+	type=anim
+	actionno=102
+	id=102
+	start=-4,174
+	delta=0.37,0.37 ;;[+0.04]
+	zoomdelta=0.37
+	mask=1
+	tile=1,0
+	tilespacing=118,0
+
+;--- lines_4/6
+[bg 0]
+	type=anim
+	actionno=103
+	id=103
+	start=-8,178
+	delta=0.45,0.45 ;;[+0.08]
+	zoomdelta=0.45
+	mask=1
+	tile=1,0
+	tilespacing=142,0
+
+;;--- lines_5/6
+;[bg 0]
+;	type=anim
+;	actionno=104
+;	id=104
+;	start=-16,186
+;	delta=0.61,0.61 ;;[+0.16]
+;	zoomdelta=0.61
+;	mask=1
+;	tile=1,0
+;	tilespacing=190,0
+
+;;--- lines_6/6
+;[bg 0]
+;	type=anim
+;	actionno=105
+;	id=105
+;	start=-13,202
+;	delta=0.93,0.93;;[+0.32]
+;	zoomdelta=0.93
+;	mask=1
+;	tile=1,0
+;	tilespacing=286,0
+
+
+;---
+[Begin Action 100]
+10,0,,0,100
+10,0,0,0,  5,,as208d048
+10,0,0,0,  5,,as168d088
+10,0,0,0,100,,as128d128
+10,0,0,0,  5,,as168d088
+10,0,0,0,  5,,as208d048
+10,0,0,0,150
+[Begin Action 101]
+10,1,0,0,110
+10,1,0,0,  5,,as208d048
+10,1,0,0,  5,,as168d088
+10,1,0,0,100,,as128d128
+10,1,0,0,  5,,as168d088
+10,1,0,0,  5,,as208d048
+10,1,0,0,140
+[Begin Action 102]
+10,2,0,0,120
+10,2,0,0,  5,,as208d048
+10,2,0,0,  5,,as168d088
+10,2,0,0,100,,as128d128
+10,2,0,0,  5,,as168d088
+10,2,0,0,  5,,as208d048
+10,2,0,0,130
+[Begin Action 103]
+10,3,0,0,130
+10,3,0,0,  5,,as208d048
+10,3,0,0,  5,,as168d088
+10,3,0,0,100,,as128d128
+10,3,0,0,  5,,as168d088
+10,3,0,0,  5,,as208d048
+10,3,0,0,120
+[Begin Action 104]
+10,4,0,0,140
+10,4,0,0,  5,,as208d048
+10,4,0,0,  5,,as168d088
+10,4,0,0,100,,as128d128
+10,4,0,0,  5,,as168d088
+10,4,0,0,  5,,as208d048
+10,4,0,0,110
+[Begin Action 105]
+10,5,0,0,150
+10,5,0,0,  5,,as208d048
+10,5,0,0,  5,,as168d088
+10,5,0,0,100,,as128d128
+10,5,0,0,  5,,as168d088
+10,5,0,0,  5,,as208d048
+10,5,0,0,100
+
+
+
+;---------------
+; floor lights pos y revise
+;---------------
+[bgctrldef 2]
+looptime=-1
+ctrlid=100
+
+[bgctrl 0]
+	type=posadd
+	time=0
+	y=10
+	ctrlid=20,100,101,102,103,104,105
+
+
+
+
+
+
+;;---------------
+;;---------------
+
+
+
+
+
+
+
+
+;;---------------
+;;---------------
+
+;--- char_G.Lee
+[bg 0]
+	type=anim
+	actionno=310
+	start=-116,179 ;;169
+	delta=0.3,0.3
+	zoomdelta=0.3
+	mask=1
+;---
+[Begin Action 310]
+40,1,0,0,1, ;;,,0.4,0.4
+
+
+;--- Car
+[bg 0]
+	type=anim
+	actionno=202
+	start=68,182 ;; 172
+	delta=0.33,0.33 ;;[+0.02]
+	zoomdelta=0.33	mask=1
+	mask=1
+	tile=1,0
+	tilespacing=258,0
+;---
+[Begin Action 202]
+21,1,0,0,1
+
+
+
+;;--- char_G.Lee
+;[bg 0]
+;	type=anim
+;	actionno=310
+;	start=-160,182 ;;172
+;	delta=0.33,0.33 ;;[+0.02]
+;	zoomdelta=0.33
+;	mask=1
+;;---
+;[Begin Action 310]
+;40,1,0,0,1, ;;,,0.4,0.4
+
+
+;--- char_Runa
+[bg 0]
+	type=anim
+	actionno=301
+	start=98,182 ;;172
+	delta=0.33,0.33 ;;[+0.02]
+	zoomdelta=0.33
+	mask=1
+;---
+[Begin Action 301]
+32,1,0,0,1, ;;,,0.4,0.4
+
+
+;--- char_Rhyme
+[bg 0]
+	type=anim
+	actionno=305
+	start=110,184 ;;174
+	delta=0.37,0.37 ;;[+0.04]
+	zoomdelta=0.37
+	mask=1
+;---
+[Begin Action 305]
+35,1,0,0,8
+35,2,0,0,8
+35,3,0,0,8
+35,2,0,0,8
+
+
+;--- char_Maya
+[bg 0]
+	type=anim
+	actionno=309
+	start=-98,184 ;;174
+	delta=0.37,0.37 ;;[+0.04]
+	zoomdelta=0.37
+	mask=1
+;---
+[Begin Action 309]
+39,1,0,0,5
+39,2,0,0,5
+
+
+;--- char_?
+[bg 0]
+	type=anim
+	actionno=306
+	start=-140,184 ;;174
+	delta=0.37,0.37 ;;[+0.04]
+	zoomdelta=0.37
+	mask=1
+;---
+[Begin Action 306]
+37,1,0,0,5
+37,2,0,0,5
+
+
+;--- Car
+[bg 0]
+	type=anim
+	actionno=211
+	start=188,187
+	delta=0.42,0.42
+	zoomdelta=0.42
+	mask=1
+;;	tile=1,0
+;;	tilespacing=472,0
+[bg 0]
+	type=anim
+	actionno=201
+	start=200,189;;178
+	delta=0.45,0.45 ;;[+0.08]
+	zoomdelta=0.45
+	mask=1
+;;	tile=1,0
+;;	tilespacing=472,0
+;---
+[Begin Action 201]
+20,1,0,0,1
+[Begin Action 211]
+20,2,0,0,1
+
+
+;--- char_Kosagi
+[bg 0]
+	type=anim
+	actionno=302
+	start=108,188 ;;178
+	delta=0.45,0.45 ;;[+0.08]
+	zoomdelta=0.45
+	mask=1
+;---
+[Begin Action 302]
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+;---------
+31,2,0,0,5
+31,4,0,0,5
+31,2,0,0,5
+31,4,0,0,5
+;---------
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+;---------
+31,2,0,0,5
+31,4,0,0,5
+31,2,0,0,5
+31,4,0,0,5
+;---------
+31,1,0,0,5
+31,3,0,0,5
+31,1,0,0,5
+31,3,0,0,5
+;---------
+31,2,0,0,5
+31,4,0,0,5
+31,2,0,0,5
+31,4,0,0,5
+
+
+;--- char_Hakuto
+[bg 0]
+	type=anim
+	actionno=304
+	start=132,188
+	delta=0.45,0.45 ;;[+0.08]
+	zoomdelta=0.45
+	mask=1
+;---
+[Begin Action 304]
+34,1,0,0,5
+34,2,0,0,5
+
+
+
+
+
+
+
+
+;--- char_?
+[bg 0]
+	type=anim
+	actionno=307
+	start=-172,188 ;; 178
+	delta=0.45,0.45 ;;[+0.08]
+	zoomdelta=0.45
+	mask=1
+;---
+[Begin Action 307]
+36,1,0,0,90
+36,2,0,0,10
+36,3,0,0,90
+36,2,0,0,10
+36,1,0,0,90
+36,2,0,0,10
+36,3,0,0,10
+36,2,0,0,10
+36,1,0,0,10
+
+
+;--- char_BM
+[bg 0]
+	type=anim
+	actionno=312
+	start=-196,188 ;; 178
+	delta=0.45,0.45 ;;[+0.08]
+	zoomdelta=0.45
+	mask=1
+;---
+[Begin Action 312]
+42,1,0,0,60
+42,2,0,0,12
+42,3,0,0,60
+42,2,0,0,12
+
+
+
+
+
+
+
+
+
+
+;--- char_Gob
+[bg 0]
+	type=anim
+	actionno=308
+	start=-245,196 ;;186
+	delta=0.61,0.61 ;;[+0.16]
+	zoomdelta=0.61
+	mask=1
+;---
+[Begin Action 308]
+38,1,0,0,5
+38,2,0,0,5
+
+
+;--- char_Rea
+[bg 0]
+	type=anim
+	actionno=311
+	start=-158,196 ;;186
+	delta=0.61,0.61 ;;[+0.16]
+	zoomdelta=0.61
+	mask=1
+;---
+[Begin Action 311]
+41,1,0,0,5
+41,2,0,0,5
+41,3,0,0,5
+41,2,0,0,5
+
+
+;--- char_Kasugai
+[bg 0]
+	type=anim
+	actionno=303
+	start=146,196 ;;186
+	delta=0.61,0.61 ;;[+0.16]
+	zoomdelta=0.61
+	mask=1
+;---
+[Begin Action 303]
+33,1,0,0,5
+33,3,0,0,5
+33,1,0,0,5
+33,3,0,0,5
+33,1,0,0,5
+33,3,0,0,5
+33,1,0,0,5
+33,3,0,0,5
+33,1,0,0,5
+33,3,0,0,5
+33,1,0,0,5
+33,3,0,0,5
+;---------
+33,2,0,0,5
+33,4,0,0,5
+;---------
+33,1,0,0,5
+33,3,0,0,5
+;---------
+33,2,0,0,5
+33,4,0,0,5
+
+
+;--- lines_5/6
+[bg 0]
+	type=anim
+	actionno=104
+	id=104
+	start=-16,186
+	delta=0.61,0.61 ;;[+0.16]
+	zoomdelta=0.61
+	mask=1
+	tile=1,0
+	tilespacing=190,0
+
+
+;--- lines_6/6
+[bg 0]
+	type=anim
+	actionno=105
+	id=105
+	start=-32,202
+	delta=0.93,0.93;;[+0.32]
+	zoomdelta=0.93
+	mask=1
+	tile=1,0
+	tilespacing=286,0
+
+
+
+
+
+
+
+
+;---
+;---
+;[EOF]

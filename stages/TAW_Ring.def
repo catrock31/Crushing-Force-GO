@@ -1,0 +1,501 @@
+; Definition of Bertha's stage
+; TAW Ring is a wrestling stage featuring a lot of characters in its background.
+; T.A.W. © Kazecat 2018
+; Guest Characters:
+; Big Z © Big z 
+; Vebli and Warka © Trinityfate
+; Azure © Panzuneko
+
+;--------------------------------------------------------
+[Info]
+ ;Name of the stage.
+name = "T.A.W. Ring"
+displayname = "T.A.W. Ring" ;Name to display
+versiondate = 03,02,2018    ;Version date of stage (MM,DD,YYYY or X.XX)
+mugenversion = 1.1          ;Version of M.U.G.E.N stage works on (X.XX)
+author = "Kazecat"         ;Stage author name
+
+;--------------------------------------------------------
+[Camera]
+ ;Camera starting position: Usually 0 for both
+startx = 0
+starty = 0
+boundleft = -500
+boundright = 500
+boundhigh = -505
+boundlow = -20
+verticalfollow = 1.5
+
+ ;Minimum vertical distance the highest player has to be from the floor,
+ ;before the camera starts to move up to follow him. For extremely
+ ;tall stages, a floor tension of about 20-30 coupled with a
+ ;vertical-follow of .8 allows the camera to follow the action.
+floortension = 360
+
+ ;Vertical distance from top and bottom edges where players can influence
+ ;vertical movement of the camera.
+tension = 180
+overdrawhigh = 120
+overdrawlow = 120
+cuthigh = 100
+cutlow = 0
+
+ ;Zoom limits
+zoomout = 0.65
+zoomin = 0.9
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+ ;Player 1 starting coordinates.
+ ;p1startx is typically -70 and p2startx is 70.
+ ;p1starty should be 0.
+p1startx = -280          ;Starting x coordinates
+p1starty = 0            ;Starting y coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 280
+p2starty = 0
+p2facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -4000 ;Left bound (x-movement)
+rightbound =  4000 ;Right bound
+
+;--------------------------------------------------------
+[Bound]
+ ;Distance from left/right edge of screen that player can move to
+ ;Typically 15
+screenleft = 15    ;Dist from left of screen that player can move to
+screenright = 15   ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+ ;"Ground" level where players stand at, measured in pixels from the
+ ;top of the screen.
+ ;Adjust this value to move the ground level up/down in the screen.
+ ;***
+zoffset = 660
+
+ ;Leave this at 1. It makes the players face each other
+autoturn = 1
+
+ ;Set the following to 1 to have the background be reset between
+ ;rounds.
+resetBG = 1
+
+ ;Width and height of the local coordinate space of the stage.
+localcoord = 1280, 720
+ ;Horizontal and vertical scaling factor for drawing.
+xscale = 2
+yscale = 2
+
+;--------------------------------------------------------
+[Shadow]
+ ;This controls the darkness of the shadow. Valid values range
+ ;from 0 (lightest) to 256 (darkest). Defaults to 128 if omitted.
+intensity = 64
+
+ ;This is the shadow color given in r,g,b. Valid values for each
+ ;range from 0 (lightest) to 255 (darkest).
+ ;Defaults to 0,0,0 if omitted.
+ ;intensity and color's effects add up to give the final shadow
+ ;result.
+color = 40,10,10
+
+ ;This is the scale factor of the shadow. Use a big scale factor
+ ;to make the shadow longer. You can use a NEGATIVE scale factor
+ ;to make the shadow fall INTO the screen.
+ ;Defaults to 0.4 if omitted.
+yscale = .05
+
+ ;This parameter lets you set the range over which the shadow is
+ ;visible. The first value is the high level, and the second is
+ ;the middle level. Both represent y-coordinates of the player.
+ ;A shadow is invisible if the player is above the high level,
+ ;and fully visible if below the middle level. The shadow is
+ ;faded in between the two levels. This gives an effect of the
+ ;shadow fading away as the player gets farther away from the
+ ;ground. If omitted, defaults to no level effects (shadow is
+ ;always fully visible).
+fade.range = -300,-70
+
+;--------------------------------------------------------
+[Reflection]
+ ;Intensity of reflection (from 0 to 256). Set to 0 to have no
+ ;reflection. Defaults to 0.
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+ ;Put a filename for a MOD, MP3 or MIDI here, or just leave it
+ ;blank if you don't want music. If an invalid filename is
+ ;given, then no music will play. To play CD audio, put
+ ;the track number followed by ".da". Using a track number of
+ ;0 will play a random audio track. For example, to play
+ ;track 3 from a music CD, use:
+ ;  bgmusic = 3.da
+bgmusic = sound/WCW_NWO Revenge OST - Starrcade.mp3
+
+;bgmloopstart = <sample number>
+;bgmloopend = <sample number>
+
+ ;Adjust the volume. 100 is for 100%.
+bgmvolume = 100
+
+;========================================================
+;--------------------------------------------------------
+; Background definition
+; ***
+;-------------------------------------
+; [BG x]
+; type = ?       "Normal"/"Parallax"  (def: "normal")
+; spriteno = ?, ? Sprite group and number: groupno, imgno  (req'd)
+; start = ?, ?   Starting location (integer)  (def: 0, 0)
+; delta = ?, ?   Change in location per camera unit moved (float)  (def: 1,1)
+; trans = ?      Transparency settings: "none"/"add"/"add1"/"sub"/"addalpha" (def: "none")
+; alpha = ?, ?   (only for trans=addalpha) Source,dest alpha (def: 256,0)
+; mask = ?       Masking (int): 0 - off, 1 - on  (def: 0)
+; velocity = ?, ? Velocity: x, y (float): speed background moves (def: 0, 0)
+; tile = ?, ?    Tiling: xtile, ytile (int): 0 - off, 1 - infinite,
+;                        >1 - tile that number of times  (def: 0, 0) - only for Normal BG
+; tilespacing = ?, ? Tiling: x, y (int) : space between tiles (def: 0, 0)
+;  Parallax-only:
+; xscale = ?, ?    Top xscale, bottom xscale (float)
+; width = ?, ?     Top width, bottom width (int)  (use either this or above, but not both)
+; yscalestart = ?  Starting y-scale (float, in percent)  (def: 100)
+; yscaledelta = ?  Change in y-scale per unit (float, in percent)  (def: 0)
+;-------------------------------------
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+spr = TAW_ring.sff
+debugbg = 0
+
+[BG Back]
+type  = normal
+spriteno = 0, 0
+layerno = 0
+start = 0,0
+trans = none
+mask  = 0
+
+[BG Back Lights]
+type = normal
+spriteno = 1,5
+layerno = 0
+start = 0,80
+trans = add
+mask = 1
+
+[BG Crowd very back]
+type = normal
+spriteno = 3,3
+layerno = 0
+start = 0,80
+trans = none
+mask = 1
+
+[BG crowd]
+type  = anim
+actionno = 3
+layerno = 0
+start = 0,80
+trans = none
+mask  = 1
+
+[BG crowd]
+type  = anim
+actionno = 2
+layerno = 0
+start = 0,80
+trans = none
+mask  = 1
+
+[BG crowd]
+type  = anim
+actionno = 1
+layerno = 0
+start = 0,80
+trans = none
+mask  = 1 
+
+[begin action 1]
+3,0, 0,0, 12
+3,0, 0,4, 12
+
+[begin action 2]
+3,1, 0,2, 12
+3,1, 0,0, 12
+
+[begin action 3]
+3,2, 0,0, 12
+3,2, 0,1, 12
+
+[BG  close 2 crowd]
+type  = anim
+actionno = 15
+layerno = 0
+start = 0,70
+trans = none
+mask  = 1 
+
+[BG  close 1 crowd]
+type  = anim
+actionno = 14
+layerno = 0
+start = 0,70
+trans = none
+mask  = 1 
+
+[begin action 14]
+2,0, 0,0, 16
+2,0, 0,8, 16
+
+[begin action 15]
+2,1, 0,8, 16
+2,1, 0,0, 16
+
+[BG Sakuma]
+type = anim
+actionno = 13
+layerno = 0
+start = 400, 300
+mask = 1
+
+;Sakuma 
+[begin action 13]
+13,0, 0,0, 16
+13,1, 0,0, 8
+13,2, -2,0, 4
+13,2, 0,0, 4
+13,2, -2,0, 4
+13,2, 0,0, 4
+13,2, -2,0, 4
+13,2, 0,0, 4
+13,2, -2,0, 4
+13,2, 0,0, 4
+13,2, -2,0, 4
+13,2, 0,0, 4
+
+
+;----------
+[BG Fox 1]
+type  = anim
+actionno  = 5
+layerno = 0
+start = -560, 300
+mask = 1
+tile = 0, 0
+
+[BG Merric]
+type = anim
+actionno = 12
+layerno = 0
+start = 250,300
+mask = 1
+
+[begin action 12]
+12,0, 0,0, 8
+12,3, 0,0, 8
+12,0, 0,0, 8
+12,3, 0,0, 8
+12,0, 0,0, 8
+12,3, 0,0, 8
+12,0, 0,0, 8
+12,3, 0,0, 8
+12,0, 0,0, 8
+12,3, 0,0, 8
+12,0, 0,0, 8
+12,3, 0,0, 8
+12,1, 0,0, 12
+12,2, 0,0, 8
+12,1, 0,0, 8
+
+
+[BG Azure]
+type = anim
+actionno = 11
+layerno = 0
+start = -240,300
+mask = 1
+
+[begin action 11]
+11,0, 0,0, 6
+11,1, 0,0, 18
+11,2, 0,0, 6
+11,3, 0,0, 6
+11,2, 0,0, 6
+11,2, 2,0, 6
+11,2, 0,0, 6
+11,2, 2,0, 6
+11,2, 0,0, 6
+11,2, 2,0, 6
+11,2, 0,0, 6
+11,2, 2,0, 6
+11,2, 0,0, 6
+11,2, 2,0, 6
+11,2, 0,0, 6
+11,2, 2,0, 6
+
+[BG Fox]
+type = anim
+actionno = 5
+layerno = 0
+start = -400, 300
+mask = 1
+tile = 0,0
+;----------
+[BG Fox ]
+type  = anim
+actionno  = 5
+layerno = 0
+start = 150, 300
+mask = 1
+tile = 0, 0
+
+[begin action 5]
+5,0, 0,0, 16
+5,1, 0,0, 16
+
+[BG Bunny 6]
+type = anim
+actionno = 7
+layerno = 0
+start = -120, 300
+mask = 1
+tile = 0,0
+
+[BG Bunny]
+type = anim
+actionno = 7
+layerno = 0
+start = 410, 300
+mask = 1
+tile = 0,0
+
+[BG Fox]
+type = anim
+actionno = 5
+layerno = 0
+start = 700, 300
+mask = 1
+tile = 0,0
+
+
+[begin action 7]
+7,0, 0,0, 16
+7,1, 0,0, 16
+
+;----------
+[BG Gustine]
+type  = anim
+actionno  = 6
+layerno = 0
+start = 0, 300
+mask = 1
+tile = 0, 0
+
+[begin action 6]
+6,0, 0,0, 6
+6,1, 0,0, 6
+6,2, 0,0, 6
+6,3, 0,0, 6
+6,4, 0,0, 6
+6,5, 0,0, 6
+6,6, 0,0, 6
+
+
+
+
+[BG Wolf 3]
+type = anim
+actionno = 8
+layerno = 0
+start = -700, 300
+mask = 1
+tile = 0,0
+
+[BG Wolf]
+type = anim
+actionno = 8
+layerno = 0
+start = -320, 300
+mask = 1
+tile = 0,0
+
+[begin action 8]
+8,0, 0,0, 16
+8,1, 0,0, 16
+
+[BG Vebli]
+type = Anim
+actionno = 10
+layerno = 0
+start = 550,300
+mask = 1
+
+[begin action 10]
+10,5, 0,0, 6
+10,6, 0,0, 6
+10,0, 0,0, 6
+10,1, 0,0, 6
+10,2, 0,0, 6
+10,3, 0,0, 6
+10,4, 0,0, 6
+
+
+[BG Big Z]
+type = Anim
+actionno = 9
+layerno = 0
+start = -550,300
+mask = 1
+
+[begin action 9]
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,0, 0,0, 6
+9,1, 0,0, 6
+9,2, 0,0, 6
+
+;----------
+[BG Ring]
+type  = normal
+spriteno = 1,0
+start = 0, 80
+layerno = 0
+mask = 1
+trans = none
+
+[BG Lights]
+type = normal
+spriteno = 1,4
+layerno = 1
+start = 0,80
+mask = 1
+trans = add
+alpha = 155,155
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

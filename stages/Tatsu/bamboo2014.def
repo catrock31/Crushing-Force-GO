@@ -1,0 +1,489 @@
+;; SNK "Samura Spirits" TakeYama MUGEN Edition
+
+[Info]
+	name="bamboo2014"
+	displayname="Bamboo2014"
+	versiondate=08,04,2016
+	mugenversion=1.1
+
+[Camera]
+	startx=0
+	starty=0
+	boundleft= -220
+	boundright= 220
+	boundhigh= -240
+	boundlow=0
+	verticalfollow=1
+	tension=100;50
+	floortension=150
+
+	;;--- * v1.1 (zoom) *---
+	;;cuthigh=30 ;;c_hi
+	cutlow=10 ;;c_lo
+	;;---
+	overdrawhigh=5
+	overdrawlow=5
+	;;---
+	tensionhigh=85 ;;t_hi
+	tensionlow=25
+	startzoom=1
+	zoomout=0.85 ;;c_zo
+	zoomin=1 ;;c_zi
+	;;--- * v1.1 (zoom) *---
+
+[PlayerInfo]
+	p1startx=-70
+	p1starty=0
+	p1startz=0
+	p1facing=1
+	p2startx=70
+	p2starty=0
+	p2startz=0
+	p2facing=-1
+	leftbound=-1000
+	rightbound=1000
+	topbound=0
+	botbound=0
+
+[Scaling]
+	topz=0
+	botz=50
+	topscale=1
+	botscale=1.2
+
+[Bound]
+	screenleft=15
+	screenright=15
+
+[StageInfo]
+	zoffset=215
+	autoturn=1
+	resetBG=0
+	localcoord=320,240
+
+[Shadow]
+	color=0,0,0
+	intensity=196
+	reflect=0
+	yscale=-0.05
+	fade.range=-100,0
+[Reflection]
+	intensity=0
+
+[Music]
+	bgmusic=sound/DOA5 Ultimate Forest OST.mp3
+	bgvolume=0
+
+
+
+;-----------------------
+[BGdef]
+	spr=bamboo2014.sff
+	debugbg=0
+
+
+;-----------------------
+;-----------------------
+
+
+;---
+;--- bg_sky
+[bg 0]
+	type=normal
+	spriteno=1,1
+	start=0,120
+	mask=0
+	tile=0,0
+	delta=0,0
+	zoomdelta=0
+
+
+
+;--- bg_bamboo
+;---
+;--- bamboo(1/4)
+[bg 0]
+	type=normal
+	spriteno=5,1
+	start=-320,-186
+	mask=1
+	tile=1,0
+	tilespacing=0,0
+	delta=0.1,0.1
+	zoomdelta=0.1
+
+;--- bamboo(2/4)
+[bg 0]
+	type=normal
+	spriteno=4,1
+	start=-320,-192
+	mask=1
+	tile=1,0
+	tilespacing=0,0
+	delta=0.2,0.2
+	zoomdelta=0.2
+
+;--- light(1/2)
+[bg 0]
+	type=normal
+	spriteno=9,11
+	start=-40,186
+	mask=1
+	tile=1,0
+	tilespacing=80,0
+	delta=0.3,0.3
+	zoomdelta=0.3
+
+;--- bamboo(3/4)
+[bg 0]
+	type=normal
+	spriteno=3,1
+	start=-320,-195
+	mask=1
+	tile=1,0
+	tilespacing=0,0
+	delta=0.4,0.4
+	zoomdelta=0.4
+
+;--- light(2/2)
+[bg 0]
+	type=normal
+	spriteno=9,1
+	start=-80,200
+	mask=1
+	tile=1,0
+	tilespacing=160,0
+	delta=0.55,0.55
+	zoomdelta=0.55
+
+
+;---
+;--- char
+[bg 0]
+	id=101
+	type=anim
+	actionno=101
+	start=0,0
+	delta=0.625,0.625
+	zoomdelta=0.625
+	mask=0
+[bg 0]
+	id=102
+	type=anim
+	actionno=102
+	start=0,0
+	delta=0.625,0.625
+	zoomdelta=0.625
+	mask=0
+[bg 0]
+	id=103
+	type=anim
+	actionno=103
+	start=0,0
+	delta=0.625,0.625
+	zoomdelta=0.625
+	mask=0
+[bg 0]
+	id=104
+	type=anim
+	actionno=104
+	start=0,0
+	delta=0.625,0.625
+	zoomdelta=0.625
+	mask=0
+[bg 0]
+	id=105
+	type=anim
+	actionno=105
+	start=0,0
+	delta=0.625,0.625
+	zoomdelta=0.625
+	mask=0
+[bg 0]
+	id=106
+	type=anim
+	actionno=106
+	start=0,0
+	delta=0.625,0.625
+	zoomdelta=0.625
+	mask=0
+[bg 0]
+	id=107
+	type=anim
+	actionno=107
+	start=0,0
+	delta=0.625,0.625
+	zoomdelta=0.625
+	mask=0
+;---
+[Begin Action 101]
+0,-1,0,0,1000
+10,1,0,-9,1,,as028d228
+10,1,0,-8,1,,as048d208
+10,1,0,-7,1,,as068d188
+10,1,0,-6,1,,as088d168
+10,1,0,-5,1,,as108d148
+10,1,0,-4,1,,as128d128
+10,1,0,-3,1,,as148d108
+10,1,0,-2,1,,as168d088
+10,1,0,-1,1,,as188d068
+10,1,0,-1,1,,as208d048
+10,1,0,-1,1,,as228d028
+10,1,0,0,2000
+10,1,0,-1,1,,as228d028
+10,1,0,-1,1,,as208d048
+10,1,0,-1,1,,as188d068
+10,1,0,-2,1,,as168d088
+10,1,0,-3,1,,as148d108
+10,1,0,-4,1,,as128d128
+10,1,0,-5,1,,as108d148
+10,1,0,-6,1,,as088d168
+10,1,0,-7,1,,as068d188
+10,1,0,-8,1,,as048d208
+10,1,0,-9,1,,as028d228
+0,-1,0,0,1000
+
+[Begin Action 102]
+0,-1,0,0,1100
+10,11,0,-9,1,,as028d228
+10,11,0,-8,1,,as048d208
+10,11,0,-7,1,,as068d188
+10,11,0,-6,1,,as088d168
+10,11,0,-5,1,,as108d148
+10,11,0,-4,1,,as128d128
+10,11,0,-3,1,,as148d108
+10,11,0,-2,1,,as168d088
+10,11,0,-1,1,,as188d068
+10,11,0,-1,1,,as208d048
+10,11,0,-1,1,,as228d028
+10,11,0,0,2000
+10,11,0,-1,1,,as228d028
+10,11,0,-1,1,,as208d048
+10,11,0,-1,1,,as188d068
+10,11,0,-2,1,,as168d088
+10,11,0,-3,1,,as148d108
+10,11,0,-4,1,,as128d128
+10,11,0,-5,1,,as108d148
+10,11,0,-6,1,,as088d168
+10,11,0,-7,1,,as068d188
+10,11,0,-8,1,,as048d208
+10,11,0,-9,1,,as028d228
+0,-1,0,0,900
+
+[Begin Action 103]
+0,-1,0,0,1200
+10,21,0,-9,1,,as028d228
+10,21,0,-8,1,,as048d208
+10,21,0,-7,1,,as068d188
+10,21,0,-6,1,,as088d168
+10,21,0,-5,1,,as108d148
+10,21,0,-4,1,,as128d128
+10,21,0,-3,1,,as148d108
+10,21,0,-2,1,,as168d088
+10,21,0,-1,1,,as188d068
+10,21,0,-1,1,,as208d048
+10,21,0,-1,1,,as228d028
+10,21,0,0,2000
+10,21,0,-1,1,,as228d028
+10,21,0,-1,1,,as208d048
+10,21,0,-1,1,,as188d068
+10,21,0,-2,1,,as168d088
+10,21,0,-3,1,,as148d108
+10,21,0,-4,1,,as128d128
+10,21,0,-5,1,,as108d148
+10,21,0,-6,1,,as088d168
+10,21,0,-7,1,,as068d188
+10,21,0,-8,1,,as048d208
+10,21,0,-9,1,,as028d228
+0,-1,0,0,800
+
+[Begin Action 104]
+0,-1,0,0,1300
+10,31,0,-9,1,,as028d228
+10,31,0,-8,1,,as048d208
+10,31,0,-7,1,,as068d188
+10,31,0,-6,1,,as088d168
+10,31,0,-5,1,,as108d148
+10,31,0,-4,1,,as128d128
+10,31,0,-3,1,,as148d108
+10,31,0,-2,1,,as168d088
+10,31,0,-1,1,,as188d068
+10,31,0,-1,1,,as208d048
+10,31,0,-1,1,,as228d028
+10,31,0,0,2000
+10,31,0,-1,1,,as228d028
+10,31,0,-1,1,,as208d048
+10,31,0,-1,1,,as188d068
+10,31,0,-2,1,,as168d088
+10,31,0,-3,1,,as148d108
+10,31,0,-4,1,,as128d128
+10,31,0,-5,1,,as108d148
+10,31,0,-6,1,,as088d168
+10,31,0,-7,1,,as068d188
+10,31,0,-8,1,,as048d208
+10,31,0,-9,1,,as028d228
+0,-1,0,0,700
+
+[Begin Action 105]
+0,-1,0,0,1400
+10,41,0,-9,1,,as028d228
+10,41,0,-8,1,,as048d208
+10,41,0,-7,1,,as068d188
+10,41,0,-6,1,,as088d168
+10,41,0,-5,1,,as108d148
+10,41,0,-4,1,,as128d128
+10,41,0,-3,1,,as148d108
+10,41,0,-2,1,,as168d088
+10,41,0,-1,1,,as188d068
+10,41,0,-1,1,,as208d048
+10,41,0,-1,1,,as228d028
+10,41,0,0,2000
+10,41,0,-1,1,,as228d028
+10,41,0,-1,1,,as208d048
+10,41,0,-1,1,,as188d068
+10,41,0,-2,1,,as168d088
+10,41,0,-3,1,,as148d108
+10,41,0,-4,1,,as128d128
+10,41,0,-5,1,,as108d148
+10,41,0,-6,1,,as088d168
+10,41,0,-7,1,,as068d188
+10,41,0,-8,1,,as048d208
+10,41,0,-9,1,,as028d228
+0,-1,0,0,600
+
+[Begin Action 106]
+0,-1,0,0,1500
+10,51,0,-9,1,,as028d228
+10,51,0,-8,1,,as048d208
+10,51,0,-7,1,,as068d188
+10,51,0,-6,1,,as088d168
+10,51,0,-5,1,,as108d148
+10,51,0,-4,1,,as128d128
+10,51,0,-3,1,,as148d108
+10,51,0,-2,1,,as168d088
+10,51,0,-1,1,,as188d068
+10,51,0,-1,1,,as208d048
+10,51,0,-1,1,,as228d028
+10,51,0,0,2000
+10,51,0,-1,1,,as228d028
+10,51,0,-1,1,,as208d048
+10,51,0,-1,1,,as188d068
+10,51,0,-2,1,,as168d088
+10,51,0,-3,1,,as148d108
+10,51,0,-4,1,,as128d128
+10,51,0,-5,1,,as108d148
+10,51,0,-6,1,,as088d168
+10,51,0,-7,1,,as068d188
+10,51,0,-8,1,,as048d208
+10,51,0,-9,1,,as028d228
+0,-1,0,0,500
+
+[Begin Action 107]
+0,-1,0,0,1600
+10,61,0,-9,1,,as028d228
+10,61,0,-8,1,,as048d208
+10,61,0,-7,1,,as068d188
+10,61,0,-6,1,,as088d168
+10,61,0,-5,1,,as108d148
+10,61,0,-4,1,,as128d128
+10,61,0,-3,1,,as148d108
+10,61,0,-2,1,,as168d088
+10,61,0,-1,1,,as188d068
+10,61,0,-1,1,,as208d048
+10,61,0,-1,1,,as228d028
+10,61,0,0,2000
+10,61,0,-1,1,,as228d028
+10,61,0,-1,1,,as208d048
+10,61,0,-1,1,,as188d068
+10,61,0,-2,1,,as168d088
+10,61,0,-3,1,,as148d108
+10,61,0,-4,1,,as128d128
+10,61,0,-5,1,,as108d148
+10,61,0,-6,1,,as088d168
+10,61,0,-7,1,,as068d188
+10,61,0,-8,1,,as048d208
+10,61,0,-9,1,,as028d228
+0,-1,0,0,400
+
+;---
+;---
+[BGCtrlDef Ninja_Pos]
+looptime=-1
+ctrlID=101
+[BGCtrl 0]
+	type=posset
+	time=0
+	x=-252
+	y= 200
+	ctrlID=101
+[BGCtrl 0]
+	type=posset
+	time=0
+	x=-220
+	y= 200
+	ctrlID=102
+[BGCtrl 0]
+	type=posset
+	time=0
+	x=-170
+	y= 200
+	ctrlID=103
+[BGCtrl 0]
+	type=posset
+	time=0
+	x=-126
+	y= 200
+	ctrlID=104
+[BGCtrl 0]
+	type=posset
+	time=0
+	x= 180
+	y= 200
+	ctrlID=105
+[BGCtrl 0]
+	type=posset
+	time=0
+	x= 220
+	y= 200
+	ctrlID=106
+[BGCtrl 0]
+	type=posset
+	time=0
+	x= 260
+	y= 200
+	ctrlID=107
+
+
+
+
+;--- bamboo(4/4)
+[bg 0]
+	type=normal
+	spriteno=2,1
+	start=-320,-250
+	mask=1
+	tile=1,0
+	tilespacing=0,0
+	delta=0.7,0.7
+	zoomdelta=0.7
+
+
+;---
+;--- floor
+[bg 0]
+	type=parallax
+	spriteno=8,1
+	start=0,210
+	mask=1
+	tile=1,0
+	tilespacing=0,0
+	delta=0.836,0.7
+	width=160,380
+	yscalestart=110
+	yscaledelta=1.1
+
+
+
+
+
+;[EOF]

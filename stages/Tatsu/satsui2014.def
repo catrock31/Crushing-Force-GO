@@ -1,0 +1,246 @@
+;; SFII Suzaku "Alternative" (Ryu Stage) MUGEN Edition
+
+[Info]
+	name="Satsui2014"
+	displayname="Satsui2014"
+	versiondate=09,18,2017
+	mugenversion=2002,02,14 ;; [default]
+
+[Camera]
+	startx=0
+	starty=0
+	boundleft= -230
+	boundright= 230
+	boundhigh= -360
+	boundlow=0
+	verticalfollow=1
+	tension=100;50
+	floortension=150
+
+	;;--- * v1.1 (zoom) *---
+	;;cuthigh=30
+	cutlow=10
+	;;---
+	overdrawhigh=5
+	overdrawlow=5
+	;;---
+	tensionhigh=85 ;;t_hi
+	tensionlow=25
+	startzoom=1
+	zoomout=0.85 ;;c_zo
+	zoomin=1 ;;c_zi
+	;;--- * v1.1 (zoom) *---
+
+[PlayerInfo]
+	p1startx=-70
+	p1starty=0
+	p1startz=0
+	p1facing=1
+	p2startx=70
+	p2starty=0
+	p2startz=0
+	p2facing=-1
+	leftbound=-1000
+	rightbound=1000
+	topbound=0
+	botbound=0
+
+[Scaling]
+	topz=0
+	botz=50
+	topscale=1
+	botscale=1.2
+
+[Bound]
+	screenleft=15
+	screenright=15
+
+[StageInfo]
+	zoffset=215
+	autoturn=1
+	resetBG=0
+
+[Shadow]
+	color=0,0,0
+	intensity=196
+	reflect=0
+	yscale=0.05
+	fade.range=-100,0
+[Reflection]
+	intensity=0
+
+[Music]
+	bgmusic=sound/SSF2T - Akuma.mp3
+	bgvolume=0
+
+
+
+;-----------------------
+[BGdef]
+	spr=satsui2014.sff
+	debugbg=0
+
+
+;-----------------------
+;-----------------------
+
+
+;---
+;--- sky
+[bg 0]
+	type=normal
+	spriteno=1,1
+	start=0,188
+	tile=0,0
+	mask=0
+	delta=    0.05,0
+	zoomdelta=0
+
+
+;---
+;---
+
+[bg 0]
+	type=normal
+	spriteno=2,1
+	start=-85,195
+	mask=1
+	delta=    0.125,0.1
+	zoomdelta=0.1
+
+;---
+[bg 0]
+	type=normal
+	spriteno=2,12
+	start=60,70
+	tile=1,0
+	tilespacing=0,0
+	mask=1
+	delta=    0.175,0.175
+	zoomdelta=0.175
+
+[bg 0]
+	type=normal
+	spriteno=2,11
+	start=60,70
+	mask=1
+	delta=    0.175,0.175
+	zoomdelta=0.175
+
+;---
+[bg 0]
+	id=13
+	type=normal
+	spriteno=3,1
+	start=0,0
+	tile=0,10
+	mask=1
+	delta=    0.6,0.6
+	zoomdelta=0.6
+[bg 0]
+	id=13
+	type=normal
+	spriteno=3,1
+	start=96,32
+	tile=0,10
+	mask=1
+	delta=    0.6,0.6
+	zoomdelta=0.6
+[bg 0]
+	id=13
+	type=normal
+	spriteno=3,1
+	start=192,64
+	tile=0,10
+	mask=1
+	delta=    0.6,0.6
+	zoomdelta=0.6
+[bg 0]
+	id=13
+	type=normal
+	spriteno=3,1
+	start=288,96
+	tile=0,10
+	mask=1
+	delta=    0.6,0.6
+	zoomdelta=0.6
+
+;---
+[bg 0]
+	id=14
+	type=anim
+	actionno=14
+	start=0,0
+	mask=1
+	delta=    0.5,0.5
+	zoomdelta=0.5
+[bg 0]
+	id=14
+	type=anim
+	actionno=14
+	start=-96,32
+	mask=1
+	delta=    0.5,0.5
+	zoomdelta=0.5
+;---
+[Begin Action 14]
+3,1,0,0,-1,h
+;---
+;---
+[BGCtrlDef Pos]
+looptime=-1
+ctrlID=13
+[BGCtrl 0]
+	type=posadd
+	time=0
+	x=-315
+	y= 90
+	ctrlID=13
+[BGCtrl 0]
+	type=posadd
+	time=0
+	x=310
+	y=160
+	ctrlID=14
+
+
+
+
+;---
+;--- floor
+[bg 0]
+	type=parallax
+	spriteno=4,1 ;;[480x80]
+	start=0,205
+	mask=1
+	tile=1,0
+	tilespacing=0,0
+	delta=0.75,0.75
+	width=480,1620
+	yscalestart=150
+	yscaledelta=1.1
+
+
+
+;---
+;--- floor_light
+[bg 0]
+	type=anim
+	actionno=20
+	start=0,225
+	mask=1
+	delta=    0.05,0.75
+	zoomdelta=0
+;---
+[Begin Action 20]
+5,1,0,0,-1,,a
+
+
+
+
+
+
+
+
+
+;[EOF]
