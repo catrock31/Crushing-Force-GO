@@ -3013,6 +3013,13 @@ vel = (random%10)-5,(random%4)-10
 accel = 0,-0.2
 ownpal = 1
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = numtarget(645)
+trigger1 = time = 46 
+var(0) = target(645),id
+ignorehitpause = 1
+
 [State 652, 2]
 type = Helper
 trigger1 = time = 46
@@ -3029,9 +3036,6 @@ ignorehitpause = 1
 type = changestate
 trigger1 = animtime = 0
 value = 648
-
-
-
 
 ;--------------------------------------------------------------------------
 ;=================
@@ -3097,19 +3101,11 @@ type = changeanim2
 trigger1 = time = 0
 value = 651
 
-[state 657, nothitby]
-type = nothitby
-trigger1 = animtime = 0
-value = SCA
-time = 8
-
-
 
 [state 655, end]
 type = selfstate
 trigger1 = animtime = 0
 value = 5110
-
 
 ;===========================================================================
 ;                      Crushed State
@@ -4940,7 +4936,7 @@ movetype = A
 physics = N
 anim = 1055
 sprpriority = 4
-velset = 4,4
+velset = 4,-4
 
 [state 1055, nothitby]
 type = nothitby
@@ -4960,7 +4956,7 @@ trigger1 = animelemtime(6) < 0
 persistent = 0
 attr = A, SP
 animtype  = Back
-damage    = 40,ifelse(p2statetype = A,12,4)
+damage    = 60,ifelse(p2statetype = A,18,6)
 guardflag = MA
 hitflag = MAF
 pausetime = 8,8
@@ -4973,8 +4969,8 @@ guardsound = S120, 0
 ground.type = high
 ground.slidetime = 24
 ground.hittime  = 18
-ground.velocity = -24,-12
-air.velocity = -24,-12
+ground.velocity = -21,-21
+air.velocity = -18,-18
 fall = 1
 id = 1050
 p2sprpriority = 2
@@ -4986,21 +4982,17 @@ airguard.hittime = 16
 guard.kill = 1
 guard.dist = 640
 
-
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(1050)
+[State 0, VarSet]
+type = VarSet
 trigger1 = movehit
-trigger1 = hitpausetime = 7
-value = 4021
-ID = 1050
+trigger1 = numtarget(1050) 
+var(0) = target(1050),id
 ignorehitpause = 1
 
 [State 0, Helper]
 type = Helper
 trigger1 = NumTarget(1050)
 trigger1 = movehit
-trigger1 = hitpausetime = 7
 name = "Melee Poison effect"
 ID = 4056
 stateno = 4056 
@@ -5009,6 +5001,7 @@ postype = p2
 facing = -1
 ownpal = 1
 ignorehitpause = 1
+persistent = 0
 
 [state x, combo damage score]
 type = parentvaradd
@@ -5177,7 +5170,13 @@ movetype = A
 physics = N
 anim = 1055
 sprpriority = 4
-velset = 4,4
+velset = 4,-4
+
+[state 1055, nothitby]
+type = nothitby
+trigger1 = 1
+value = SCA,AA,AT
+ignorehitpause = 1
 
 [State 40XX, attack scaling]
 type = attackMulSet
@@ -5185,19 +5184,13 @@ trigger1 = 1
 value = root,fvar(10)
 ignorehitpause = 1
 
-[state 1065, nothitby]
-type = nothitby
-trigger1 = 1
-value = SCA,AA,AT
-ignorehitpause = 1
-
-[State 1060, 5] 
+[State 1050, 5] 
 type = hitdef
 trigger1 = animelemtime(6) < 0
 persistent = 0
 attr = A, SP
 animtype  = Back
-damage    = 50,ifelse(p2statetype = A, 15,5)
+damage    = 70,ifelse(p2statetype = A,21,7)
 guardflag = MA
 hitflag = MAF
 pausetime = 8,8
@@ -5210,34 +5203,30 @@ guardsound = S120, 0
 ground.type = high
 ground.slidetime = 24
 ground.hittime  = 18
-ground.velocity = -24,-24
-air.velocity = -24,-24
+ground.velocity = -21,-21
+air.velocity = -18,-18
 fall = 1
 id = 1060
 p2sprpriority = 2
 guard.velocity = -32            
 guard.hittime = 16
 guard.slidetime = 16
-airguard.velocity = -10,-16 
+airguard.velocity = -8,-16
 airguard.hittime = 16
 guard.kill = 1
 guard.dist = 640
 
-
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(1060)
+[State 0, VarSet]
+type = VarSet
 trigger1 = movehit
-trigger1 = hitpausetime = 7
-value = 4021
-ID = 1060
+trigger1 = numtarget(1060) 
+var(0) = target(1060),id
 ignorehitpause = 1
 
 [State 0, Helper]
 type = Helper
 trigger1 = NumTarget(1060)
 trigger1 = movehit
-trigger1 = hitpausetime = 7
 name = "Melee Poison effect"
 ID = 4056
 stateno = 4056 
@@ -5246,6 +5235,7 @@ postype = p2
 facing = -1
 ownpal = 1
 ignorehitpause = 1
+persistent = 0
 
 [state x, combo damage score]
 type = parentvaradd
@@ -5255,10 +5245,10 @@ value = -6
 persistent = 0
 ignorehitpause = 1
 
-[state 1065, end]
+[state 1055, end]
 type = destroyself
 trigger1 = animtime = 0
-trigger2 = gethitvar(damage) != 0
+trigger2 = gethitvar(damage)!= 0
 ignorehitpause = 1
 
 ;--------------------------------------------------------------------------
@@ -10424,14 +10414,12 @@ fall = 1
 fall.recover = 0
 guard.dist = 1280
 
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(4000)
-triggerall = movehit
-trigger1 = time = 167
-trigger2 = time = 18
-value = 4055
-ID = 4000
+[State 0, VarSet]
+type = VarSet
+trigger1 = numtarget(4000)
+trigger1 = movehit = 1
+var(0) = target(4000),id
+ignorehitpause = 1
 
 [State x, POISON]
 type = Helper
@@ -11633,6 +11621,11 @@ physics = N
 ctrl = 0
 sprpriority = 3
 
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Hey I'm Ikemen override shit!"
+
 [state 4000, arc]
 type = velset
 trigger1 = time = 0
@@ -11649,6 +11642,46 @@ ignorehitpause = 1
 type = attackdist
 trigger1 = 1
 value = 200
+
+[state 4000, Light wind]
+type = velset
+triggerall = parent,stateno = 1100
+trigger1 = parent,time > 10
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.0625)
+Y = floor((p2dist y - 160) * 0.0625)
+persistent = 0
+
+[state 4000, Hard wind]
+type = velset
+triggerall = vel x < 25
+trigger1 = parent,stateno = 1110
+trigger1 = parent,time > 10
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.125)
+y = floor((p2dist y - 160) * 0.125)
+persistent = 0
+
+[state 4000, EX wind]
+type = velset
+trigger1 = parent,stateno = 1120
+trigger1 = parent,time > 8
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.25)
+y = floor((p2dist y - 160) * 0.25) 
+persistent = 0
+
+[state 4000, super wind]
+type = veladd
+triggerall = vel x < 25
+trigger1 = parent,stateno = 3000
+trigger1 = rootdist x < 0
+x = 16
+
+[state 4001, turn]
+type = turn
+trigger1 = facing != parent,facing
+trigger1 = parent,stateno = 1100 || parent, stateno = 1110 || parent, stateno = 1120 || parent,stateno = 3000
 
 [state 4000, hitoverride]
 type = hitoverride
@@ -11681,7 +11714,6 @@ ownpal = 1
 
 [State 4000, 5] 
 type = hitdef
-trigger1 = 1
 trigger1 = !moveguarded
 persistent = 2
 attr = S, SP
@@ -11691,7 +11723,7 @@ guardflag = MA
 getpower = 30
 givepower = 50
 hitflag = MAF
-pausetime = 4,4
+pausetime = 1,4
 sparkno = -1
 sparkxy = -10,-60
 hitsound   = S1000,4
@@ -11712,21 +11744,18 @@ airguard.hittime = 16
 guard.kill = 1
 guard.dist = 640
 
-
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(4000)
+[State 0, VarSet]
+type = VarSet
 trigger1 = movehit
-trigger1 = hitpausetime = 3
-value = 4020
-ID = 4000
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
 ignorehitpause = 1
 
 [State 0, Helper]
 type = Helper
 trigger1 = NumTarget(4000)
 trigger1 = movehit
-trigger1 = hitpausetime = 3
+;trigger1 = hitpausetime = 3
 name = "Ranged Poison effect"
 ID = 4006
 stateno = 4006 
@@ -11735,6 +11764,7 @@ postype = p2
 facing = -1
 ownpal = 1
 ignorehitpause = 1
+persistent = 0
 
 [state 4001, end]
 type = changestate
@@ -11761,6 +11791,7 @@ type = changestate
 trigger1 = vel y > 0
 trigger1 = pos y > -Vel y
 value = 4001
+
 ;-------------------------------------------------------
 ; Projectile Gas - Light
 [statedef 4002]
@@ -12156,63 +12187,24 @@ physics = N
 velset = 0,0
 anim = 4006
 
-[State 0, Reversal]
-Type = ReversalDef
-Trigger1 = Time = 0
-Reversal.Attr = C,NP
-PauseTime = 0,0
-SparkNo = -1
-NumHits = 0
-
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "var(0) = %d fvar(1) = %f  fvar(2) = %f"
+text = "Target ID = %d fvar(1) = %f  fvar(2) = %f"
 params = var(0), var(1), var(2)
 ignorehitpause = 1
 
-[State 0, VarAdd]
-type = Varadd
-triggerall = time
-triggerall = var(0)<2
-triggerall = numtarget
-trigger1 = target,stateno != 4020
-trigger2 = target,movetype != H
-var(0) = 1
-
 [State 0, VarSet]
 type = VarSet
-triggerall = var(0)<2
-triggerall = time < 2
-triggerall = numtarget
-trigger1 = movehit
-trigger1 = target,vel x > 0
-var(1) = 1
-persistent = 0
-ignorehitpause = 1
-
-[State 0, VelSet]
-type = targetVelSet
-triggerall = var(0)<2
-triggerall = numtarget
-triggerall = target,movetype = H
-trigger1 = target,stateno = 4020
-trigger1 = target,time=1
-trigger2 = target,stateno = 5001
-trigger2 = target,prevstateno = 4020
-trigger2 = target,time=1
-trigger3 = target,stateno = 5030
-trigger3 = target,prevstateno = 4020
-trigger3 = target,time=1
-x = ifelse(var(1)=1,18,-18)
-y = -4*(target,statetype = A);fvar(2)
-ignorehitpause = 1
+trigger1 = prevstateno != 4000 && prevstateno != 4010
+trigger1 = !time
+var(0) = parent,var(0)
 
 [State 0, posset]
 type = posset
 trigger1 = time >= 1
-x = enemy,pos x
-y = enemy,pos y
+x = playerid(var(0)),pos x
+y = playerid(var(0)),pos y
 
 [state 4020, smoke]
 type = explod
@@ -12222,7 +12214,7 @@ anim = 4011
 scale = 1, 1
 sprpriority = 4
 removetime = -2
-pos = -50 + (random%100),enemy,const(size.mid.pos.y) - 40 + (random%80)
+pos = -50 + (random%100),playerid(var(0)),const(size.mid.pos.y) - 40 + (random%80)
 ownpal = 1
 
 [state 4020, smoke]
@@ -12233,81 +12225,93 @@ anim = 4011
 scale = 1, 1
 sprpriority = 4
 removetime = -2
-pos = -50+(random%100),enemy,const(size.head.pos.y) - 40 + (random%80)
+pos = -50+(random%100),playerid(var(0)),const(size.head.pos.y) - 40 + (random%80)
 ownpal = 1
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+var(1) = ifelse(playerid(var(0)),name = "SOR2",1,0)
 
-
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = !numhelper(4056)
+trigger1 = gametime%30=[0,10]
+time = 1
+add = 140,0,140
+mul = 128,128,128
+color = 256
+redirectid = var(0)
 [State 0, LifeAdd]
-type = targetLifeAdd
+type = LifeAdd
 trigger1 = time%15=0
-trigger1 = enemy,name != "SOR2"
-value = -ceil(enemy,const(data.life)*0.002)  ;0.003
+trigger1 = !var(1)
+value = -ceil(playerid(var(0)),const(data.life)*0.002)  ;0.003
 kill = 0
 absolute = 1
 persistent = 5
-
-
+redirectid = var(0)
 
 [State 0, LifeAdd]
-type = targetLifeAdd
+type = LifeAdd
 trigger1 = time%15=0
-trigger1 = enemy,name = "SOR2"
+trigger1 = var(1) = 1
 value = -6
 kill = 1
 absolute = 1
 persistent = 5
+redirectid = var(0)
 
 [State 0, Run Energy Sap]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-trigger1 = enemy,stateno = 100;Running & jumping burns more oxygen
-trigger2 = enemy,stateno =[700,799]
-value = ifelse(enemy,vel x > 18,ifelse(enemy, vel x > 27,-120,-60),-30)
+trigger1 = playerid(var(0)),stateno = 100;Running & jumping burns more oxygen
+trigger2 = playerid(var(0)),stateno =[700,799]
+value = ifelse(playerid(var(0)),vel x > 18,ifelse(playerid(var(0)), vel x > 27,-120,-60),-30)
 persistent = 5
-
+redirectid = var(0)
 [State 0, Run Approach Energy Sap]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-trigger1 = (enemy,stateno = [40,50]) && enemy,vel x > 0
-trigger2 = enemy,stateno = 20  && enemy,vel x > 0
+trigger1 = (playerid(var(0)),stateno = [40,50]) && playerid(var(0)),vel x > 0
+trigger2 = playerid(var(0)),stateno = 20  && playerid(var(0)),vel x > 0
 value = -15 
 persistent = 5
-
+redirectid = var(0)
 ;Rapid Bunny
 [State 0, Run Drain]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-triggerall = enemynear,name = "Rapid Bunny"
-trigger1 = (enemynear,stateno = 1000) || (enemynear,stateno = 1010) || (enemynear,stateno = 1020)
-trigger2 = (enemynear,stateno = 1101) || (enemynear,stateno = 1111) || (enemynear,stateno = 1121)
-value = ifelse(enemy,vel x > 18,ifelse(enemy, vel x > 27,-120,-60),-30)
+triggerall = playerid(var(0)),name = "Rapid Bunny"
+trigger1 = (playerid(var(0)),stateno = 1000) || (playerid(var(0)),stateno = 1010) || (playerid(var(0)),stateno = 1020)
+trigger2 = (playerid(var(0)),stateno = 1101) || (playerid(var(0)),stateno = 1111) || (playerid(var(0)),stateno = 1121)
+value = ifelse(playerid(var(0)),vel x > 18,ifelse(playerid(var(0)), vel x > 27,-120,-60),-30)
 persistent = 5
-
+redirectid = var(0)
 ;Violet Bunny
 [State 0, Run Drain]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-triggerall = enemynear,name = "Violet 'Tyla' Bunny"
-trigger1 = (enemynear,stateno = [1150,1155]) || (enemynear,stateno = 1170) 
-value = ifelse(enemy,vel x > 18,ifelse(enemy, vel x > 27,-120,-60),-30)
+triggerall = playerid(var(0)),name = "Violet 'Tyla' Bunny"
+trigger1 = (playerid(var(0)),stateno = [1150,1155]) || (playerid(var(0)),stateno = 1170) 
+value = ifelse(playerid(var(0)),vel x > 18,ifelse(playerid(var(0)), vel x > 27,-120,-60),-30)
 persistent = 5
-
+redirectid = var(0)
 ;Jumba Elephant
 [State 0, Run Drain]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-triggerall = enemynear,name = "Jumba Elephant"
-trigger1 = (enemynear,stateno = 1000) || (enemynear,stateno = 1010) || (enemynear,stateno = 1020)
-value = ifelse(enemy,vel x > 18,ifelse(enemy, vel x > 27,-120,-60),-30)
+triggerall = playerid(var(0)),name = "Jumba Elephant"
+trigger1 = (playerid(var(0)),stateno = 1000) || (playerid(var(0)),stateno = 1010) || (playerid(var(0)),stateno = 1020)
+value = ifelse(playerid(var(0)),vel x > 18,ifelse(playerid(var(0)), vel x > 27,-120,-60),-30)
 persistent = 5
-
+redirectid = var(0)
 [state 4005, 1]
 type = destroyself
 trigger1 = time >= 480
 trigger2 = roundstate = 3
-trigger3 = !enemy,alive
-trigger3 = numenemy < 2
+trigger3 = time
+trigger3 = playerid(var(0)),alive=0
 trigger4 = time > 24 && root,movetype = H && root,stateno != [120,159]
 
 ;---------------------------------------------------------------------------
@@ -12466,13 +12470,18 @@ trigger1 = time > 420
 trigger2 = backedgedist < -10
 
 ;---------------------------------------------------------------------------
-;Heavy Gas cloud
+; Projectile Gas - Hard
 [statedef 4010]
 type = A
 movetype = A
 physics = N
 ctrl = 0
 sprpriority = 3
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Hey I'm Ikemen override shit!"
 
 [state 4000, arc]
 type = velset
@@ -12486,18 +12495,66 @@ trigger1 = 1
 value = root,fvar(10)
 ignorehitpause = 1
 
-
-[state 4010, nothitby]
-type = nothitby
-trigger1 = 1
-value = ,AA,AT
-
-[state 4010, attackdist]
+[state 4000, attackdist]
 type = attackdist
 trigger1 = 1
 value = 200
 
-[state 4010, anim]
+[state 4000, Light wind]
+type = velset
+triggerall = parent,stateno = 1100
+trigger1 = parent,time > 10
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.0625)
+Y = floor((p2dist y - 160) * 0.0625)
+persistent = 0
+
+[state 4000, Hard wind]
+type = velset
+triggerall = vel x < 25
+trigger1 = parent,stateno = 1110
+trigger1 = parent,time > 10
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.125)
+y = floor((p2dist y - 160) * 0.125)
+persistent = 0
+
+[state 4000, EX wind]
+type = velset
+trigger1 = parent,stateno = 1120
+trigger1 = parent,time > 8
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.25)
+y = floor((p2dist y - 160) * 0.25) 
+persistent = 0
+
+[state 4000, super wind]
+type = veladd
+triggerall = vel x < 25
+trigger1 = parent,stateno = 3000
+trigger1 = rootdist x < 0
+x = 16
+
+[state 4001, turn]
+type = turn
+trigger1 = facing != parent,facing
+trigger1 = parent,stateno = 1100 || parent, stateno = 1110 || parent, stateno = 1120 || parent,stateno = 3000
+
+[state 4000, hitoverride]
+type = hitoverride
+trigger1 = 1
+attr = SCA, AP
+time = 1
+stateno = 4005
+ignorehitpause = 1
+persistent = 1
+
+[state 4000, nothitby]
+type = nothitby
+trigger1 = 1
+value = ,AA,AT
+
+[state 4000, anim]
 type = changeanim
 trigger1 = time = 0
 value = 4000
@@ -12512,15 +12569,172 @@ bindtime = 1
 anim = 4010
 ownpal = 1
 
-[State 4010, 5] 
+[State 4000, 5] 
+type = hitdef
+trigger1 = !moveguarded
+persistent = 2
+attr = S, SP
+animtype  = Hard
+damage    = 40,4
+guardflag = MA
+getpower = 30
+givepower = 50
+hitflag = MAF
+pausetime = 1,4
+sparkno = -1
+sparkxy = -10,-60
+hitsound   = S1000,4
+hitonce = 1
+p2facing = 1
+guardsound = S120, 0
+ground.type = high
+ground.slidetime = 18
+ground.hittime  = 18
+ground.velocity = -40,0
+air.velocity = -18,-4
+id = 4000
+guard.velocity = -32            
+guard.hittime = 16
+guard.slidetime = 16
+airguard.velocity = -20,-2 
+airguard.hittime = 16
+guard.kill = 1
+guard.dist = 640
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = movehit
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
+ignorehitpause = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = NumTarget(4000)
+trigger1 = movehit
+;trigger1 = hitpausetime = 3
+name = "Ranged Poison effect"
+ID = 4006
+stateno = 4006 
+pos = 0,0
+postype = p2
+facing = -1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[state 4001, end]
+type = changestate
+trigger1 = movecontact
+value = 4005
+
+[state x, combo damage score]
+type = parentvaradd
+trigger1 = movehit
+v = 18
+value = -9
+persistent = 0
+ignorehitpause = 1
+
+[State 4001, 4]
+type = DestroySelf
+trigger1 = frontEdgeDist < -80
+trigger2 = movereversed
+trigger3 = time > parent,var(24)
+trigger4 = backedgedist < -30
+
+[state 4000, changestate]
+type = changestate
+trigger1 = vel y > 0
+trigger1 = pos y > -Vel y
+value = 4001
+
+[statedef 4030]
+type = A
+movetype = A
+physics = N
+ctrl = 0
+sprpriority = 3
+
+[state 4030, arc]
+type = velset
+trigger1 = time = 0
+y = 0
+x = parent,var(23)
+
+[State 40XX, attack scaling]
+type = attackMulSet
+trigger1 = 1
+value = root,fvar(10)
+ignorehitpause = 1
+
+[state 4001, turn]
+type = turn
+trigger1 = facing != parent,facing
+trigger1 = parent,stateno = 1100 || parent, stateno = 1110
+
+[state 4000, Light wind]
+type = velset
+triggerall = parent,stateno = 1100
+trigger1 = parent,time > 10
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.0625)
+Y = floor((p2dist y - 160) * 0.0625)
+persistent = 0
+
+[state 4000, Hard wind]
+type = velset
+triggerall = vel x < 25
+trigger1 = parent,stateno = 1110
+trigger1 = parent,time > 10
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.125)
+y = floor((p2dist y - 160) * 0.125)
+persistent = 0
+
+[state 4000, EX wind]
+type = velset
+trigger1 = parent,stateno = 1120
+trigger1 = parent,time > 8
+trigger1 = rootdist x < 0
+x = floor(p2dist x * 0.25)
+y = floor((p2dist y - 160) * 0.25) 
+persistent = 0
+
+[state 4030, nothitby]
+type = nothitby
+trigger1 = 1
+value = ,AA,AT
+
+[state 4030, anim]
+type = changeanim
+trigger1 = time = 0
+value = 4000
+
+[state 4030, attackdist]
+type = attackdist
+trigger1 = 1
+value = 200;const(size.proj.attack.dist)
+
+[state 4030, gas fx]
+type = explod
+trigger1 = (random%10)=0
+pos = -10,0
+scale = 1,2
+removetime = -2
+bindtime = 1
+anim = 4010
+ownpal = 1
+
+[State 4030, 5] 
 type = hitdef
 trigger1 = 1
 attr = S, SP
 animtype  = Hard
-damage    = 60,6
-getpower = 30
+damage    = 40,4
+getpower = 0
 givepower = 50
-persistent = 3
+persistent = 6
 guardflag = MA
 hitflag = MAF
 pausetime = 2,6
@@ -12536,25 +12750,25 @@ id = 4000
 hitonce = 1
 p2facing = 1
 guard.velocity = -32            
-guard.hittime = 10
-guard.slidetime = 10
+guard.hittime = 18
+guard.slidetime = 18
+guard.kill = 1
 airguard.velocity = -20,-3 
 airguard.hittime = 16
-guard.kill = 1
 guard.dist = 640
 
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(4000)
+[State 0, VarSet]
+type = VarSet
 trigger1 = movehit
-value = 4020
-ID = 4000
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
+ignorehitpause = 1
 
 [State 0, Helper]
 type = Helper
-;trigger1 = !numhelper(4006)
 trigger1 = NumTarget(4000)
 trigger1 = movehit
+;trigger1 = hitpausetime = 3
 name = "Ranged Poison effect"
 ID = 4006
 stateno = 4006 
@@ -12563,8 +12777,15 @@ postype = p2
 facing = -1
 ownpal = 1
 ignorehitpause = 1
+persistent = 0
 
-[state 4000, hitoverride]
+
+[state 4001, end]
+type = changestate
+trigger1 = movecontact
+value = 4005+(numtarget(4000)&&movehit)
+
+[state 4030, hitoverride]
 type = hitoverride
 attr = SCA, AP,AA
 trigger1 = 1
@@ -12572,22 +12793,21 @@ time = 1
 stateno = 4005
 ignorehitpause = 1
 
-[State 4010, 4]
-type = DestroySelf
-trigger1 = movecontact
-trigger2 = BackEdgeDist < -30
-trigger3 = movereversed
-trigger4 = time > parent,var(24)
-trigger5 = frontEdgeDist < -80
-
 [state x, combo damage score]
 type = parentvaradd
 trigger1 = movehit
 v = 18
-value = -9
+value = -12
 persistent = 0
 ignorehitpause = 1
 
+[State 4030, 4]
+type = DestroySelf
+trigger1 = movecontact
+trigger2 = BackEdgeDist < -30
+trigger3 = movereversed
+trigger4 = frontEdgeDist < -80
+trigger5 = time > parent,var(24)
 
 [state 4000, changestate]
 type = changestate
@@ -13362,8 +13582,8 @@ p2stateno = 4020
 ground.type = high
 ground.slidetime = 12
 ground.hittime  = 12
-ground.velocity = 12,-12
-air.velocity = 12,-12
+ground.velocity = 60,-25
+air.velocity = 60,-25
 down.velocity = 0,0
 down.hittime = 16
 id = 4000
@@ -13371,13 +13591,13 @@ hitonce = 1
 fall = 1
 fall.recover = 0
 
-;Poison Trigger
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(4000)
+[State 0, VarSet]
+type = VarSet
 trigger1 = movehit
-value = 4055
-ID = 4000
+trigger1 = numtarget(4000) 
+var(0) = target(4000),id
+ignorehitpause = 1
+
 
 [State 0, Helper]
 type = Helper
@@ -13542,13 +13762,10 @@ physics = N
 velset = 0,0
 anim = 4006
 
-[State 0, Reversal]
-Type = ReversalDef
-Trigger1 = Time = 0
-Reversal.Attr = C,NP
-PauseTime = 0,0
-SparkNo = -1
-NumHits = 0
+[State 0, VarAdd]
+type = Varset
+trigger1 = !time
+var(0) = parent,var(0)
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
@@ -13557,47 +13774,11 @@ text = "var(0) = %d fvar(1) = %f  fvar(2) = %f"
 params = var(0), var(1), var(2)
 ignorehitpause = 1
 
-[State 0, VarAdd]
-type = Varadd
-triggerall = time
-triggerall = var(0)<2
-trigger1 = target,stateno != 4055
-trigger2 = target,movetype != H
-var(0) = 1
-
-[State 0, VarSet]
-type = VarSet
-triggerall = var(0)<2
-triggerall = time < 2
-triggerall = numtarget
-trigger1 = movehit
-trigger1 = target,vel x > 0
-var(1) = 1
-persistent = 0
-ignorehitpause = 1
-
-[State 0, VelSet]
-type = targetVelSet
-triggerall = var(0)<2
-triggerall = numtarget
-triggerall = target,movetype = H
-trigger1 = target,stateno = 4055
-trigger1 = target,time=1
-trigger2 = target,stateno = 5001
-trigger2 = target,prevstateno = 4055
-trigger2 = target,time=1
-trigger3 = target,stateno = 5030
-trigger3 = target,prevstateno = 4055
-trigger3 = target,time=1
-x = ifelse(var(1)=1,18,-18)
-y = -8*(target,statetype = A);fvar(2)
-ignorehitpause = 1
-
 [State 0, posset]
 type = posset
-trigger1 = time >= 1
-x = enemy,pos x
-y = enemy,pos y
+trigger1 = time
+x = playerid(var(0)),pos x
+y = playerid(var(0)),pos y
 
 [state 4020, smoke]
 type = explod
@@ -13607,7 +13788,7 @@ anim = 4011
 scale = 1, 1
 sprpriority = 4
 removetime = -2
-pos = -50 + (random%100),enemy,const(size.mid.pos.y) - 40 + (random%80)
+pos = -50 + (random%100),playerid(var(0)),const(size.mid.pos.y) - 40 + (random%80)
 ownpal = 1
 
 [state 4020, smoke]
@@ -13618,81 +13799,92 @@ anim = 4011
 scale = 1, 1
 sprpriority = 4
 removetime = -2
-pos = -50+(random%100),enemy,const(size.head.pos.y) - 40 + (random%80)
+pos = -50+(random%100),playerid(var(0)),const(size.head.pos.y) - 40 + (random%80)
 ownpal = 1
 
+[State 0, PalFXWiz]
+type = PalFX
+trigger1 = gametime%30=[0,10]
+time = 1
+add = 180,0,180
+mul = 64,0,64
+color = 128
+redirectid = var(0)
+
 [State 0, LifeAdd]
-type = targetLifeAdd
+type = LifeAdd
 trigger1 = time%15=0
-trigger1 = enemy,name != "SOR2"
-value = -ceil(enemy,const(data.life)*0.003)  ;0.009
+trigger1 = playerid(var(0)),name != "SOR2"
+value = -ceil(playerid(var(0)),const(data.life)*0.003)  ;0.009
 kill = 0
 absolute = 1
 persistent = 5
-
-
+redirectid = var(0)
 
 [State 0, LifeAdd]
-type = targetLifeAdd
+type = LifeAdd
 trigger1 = time%15=0
-trigger1 = enemy,name = "SOR2"
+trigger1 = playerid(var(0)),name = "SOR2"
 value = -24
 kill = 1
 absolute = 1
 persistent = 5
+redirectid = var(0)
 
 [State 0, Run Drain]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-trigger1 = enemy,stateno = 100;Running & jumping burns more oxygen
-trigger2 = enemy,stateno =[700,799]
-value = ifelse(enemy,vel x > 18,ifelse(enemy, vel x > 27,-120,-60),-30)
+trigger1 = playerid(var(0)),stateno = 100;Running & jumping burns more oxygen
+trigger2 = playerid(var(0)),stateno =[700,799]
+value = ifelse(playerid(var(0)),vel x > 18,ifelse(playerid(var(0)), vel x > 27,-120,-60),-30)
 persistent = 5
+redirectid = var(0)
 
 [State 0, Approach Drain]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-trigger1 = (enemy,stateno = [40,50]) && enemy,vel x > 0
-trigger2 = enemy,stateno = 20  && enemy,vel x > 0
+trigger1 = (playerid(var(0)),stateno = [40,50]) && playerid(var(0)),vel x > 0
+trigger2 = playerid(var(0)),stateno = 20  && playerid(var(0)),vel x > 0
 value = -15
 persistent = 5
+redirectid = var(0)
 
 ;============================================================
 ;Character Specific - Energy penalty for running in poison gas
 ;============================================================
 ;Rapid Bunny
 [State 0, Run Drain]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-triggerall = enemynear,name = "Rapid Bunny"
-trigger1 = (enemynear,stateno = 1000) || (enemynear,stateno = 1010) || (enemynear,stateno = 1020)
-trigger2 = (enemynear,stateno = 1101) || (enemynear,stateno = 1111) || (enemynear,stateno = 1121)
-value = ifelse(enemy,vel x > 18,ifelse(enemy, vel x > 27,-120,-60),-30)
+triggerall = playerid(var(0)),name = "Rapid Bunny"
+trigger1 = (playerid(var(0)),stateno = 1000) || (playerid(var(0)),stateno = 1010) || (playerid(var(0)),stateno = 1020)
+trigger2 = (playerid(var(0)),stateno = 1101) || (playerid(var(0)),stateno = 1111) || (playerid(var(0)),stateno = 1121)
+value = ifelse(playerid(var(0)),vel x > 18,ifelse(playerid(var(0)), vel x > 27,-120,-60),-30)
 persistent = 5
-
+redirectid = var(0)
 ;Violet Bunny
 [State 0, Run Drain]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-triggerall = enemynear,name = "Violet 'Tyla' Bunny"
-trigger1 = (enemynear,stateno = [1150,1155]) || (enemynear,stateno = 1170) 
-value = ifelse(enemy,vel x > 18,ifelse(enemy, vel x > 27,-120,-60),-30)
+triggerall = playerid(var(0)),name = "Violet 'Tyla' Bunny"
+trigger1 = (playerid(var(0)),stateno = [1150,1155]) || (playerid(var(0)),stateno = 1170) 
+value = ifelse(playerid(var(0)),vel x > 18,ifelse(playerid(var(0)), vel x > 27,-120,-60),-30)
 persistent = 5
-
+redirectid = var(0)
 ;Jumba Elephant
 [State 0, Run Drain]
-type = targetpowerAdd
+type = powerAdd
 triggerall = time%15=0
-triggerall = enemynear,name = "Jumba Elephant"
-trigger1 = (enemynear,stateno = 1000) || (enemynear,stateno = 1010) || (enemynear,stateno = 1020)
-value = ifelse(enemy,vel x > 18,ifelse(enemy, vel x > 27,-120,-60),-30)
+triggerall = playerid(var(0)),name = "Jumba Elephant"
+trigger1 = (playerid(var(0)),stateno = 1000) || (playerid(var(0)),stateno = 1010) || (playerid(var(0)),stateno = 1020)
+value = ifelse(playerid(var(0)),vel x > 18,ifelse(playerid(var(0)), vel x > 27,-120,-60),-30)
 persistent = 5
-
+redirectid = var(0)
 [state 4005, 1]
 type = destroyself
 trigger1 = time >= 480
 trigger2 = roundstate = 3
-trigger3 = !enemy,alive
+trigger3 = !playerid(var(0)),alive
 trigger3 = numenemy < 2
 trigger4 = root,statetype = L  || root,gethitvar(isbound) || root,hitfall =  1
 ;====================================================================
@@ -14369,15 +14561,12 @@ fall = ifelse(parent,var(28) = 1, 1,0)
 fall.recover = 0
 guard.dist = 480
 
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(4080)
+[State 0, VarSet]
+type = VarSet
+trigger1 = numtarget(4080)
 trigger1 = movehit
-trigger1 = parent,var(28) = 2
-value = 4020
-ID = 4080
-ignorehitpause = 1
-
+var(0) = target(4080),id
+ignorehitpause =1
 [State 0, Helper]
 type = Helper
 triggerALL = NumTarget(4080)
@@ -14449,7 +14638,7 @@ ignorehitpause = 1
 type = destroyself
 trigger1 = parent,var(28) <= 0
 trigger2 = parent,var(34) = 1
-trigger3 = time > 180
+trigger3 = time > 420
 trigger4 = parent,numhelper(4089) = 0
 trigger5 = parent,movetype = H && parent,stateno != [120,155]
 
@@ -14559,14 +14748,12 @@ fall = ifelse(parent,var(28) = 1, 1,0)
 fall.recover = 0
 guard.dist = 480
 
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(4080)
+[State 0, VarSet]
+type = VarSet
+trigger1 = numtarget(4080)
 trigger1 = movehit
-trigger1 = parent,var(28) = 2
-value = 4020
-ID = 4080
-ignorehitpause = 1
+var(0) = target(4080),id
+ignorehitpause =1
 
 [State 0, Helper]
 type = Helper
@@ -14623,7 +14810,7 @@ ignorehitpause = 1
 type = destroyself
 trigger1 = parent,var(28) <= 0
 trigger2 = parent,var(34) = 1
-trigger3 = time > 240
+trigger3 = time > 420
 trigger4 = parent,numhelper(4089) = 0
 trigger5 = parent,movetype = H && parent,stateno != [120,155]
 ignorehitpause = 0
@@ -14687,7 +14874,7 @@ animtype  = heavy
 damage    = 27,5
 guardflag = MA
 pausetime = ifelse(parent,var(28)=2,0,2),2
-guard.pausetime =2,2
+guard.pausetime =1,1
 hitonce = 1
 sparkno = 2
 id = 4080
@@ -14708,6 +14895,13 @@ airguard.hittime = 22
 fall = ifelse(parent,var(28) = 1, 1,0)
 fall.recover = 0
 guard.dist = 480
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = numtarget(4080)
+trigger1 = movehit
+var(0) = target(4080),id
+ignorehitpause =1
 
 [state 4080, hit count]
 type = parentvaradd
@@ -14732,15 +14926,6 @@ v = 28
 value = -1
 persistent = 0
 ignorehitpause =1
-
-[State 0, TargetState]
-type = TargetState
-triggerall = NumTarget(4080)
-triggerall = movehit
-trigger1 = parent,var(28) = 2
-value = 4020
-ID = 4080
-ignorehitpause = 1
 
 [State 4088, Helper]
 type = Helper
@@ -14797,9 +14982,9 @@ ignorehitpause = 1
 type = destroyself
 trigger1 = parent,var(28) <= 0
 trigger2 = parent,var(34) = 1
-trigger3 = time > 300
+trigger3 = time > 420
 trigger4 = parent,numhelper(4089) = 0
-;trigger5 = parent,movetype = H && parent,stateno != [120,155]
+
 
 ;--------------------------------------------------------------------------
 ;Plasma time Counter
