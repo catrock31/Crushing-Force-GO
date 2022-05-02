@@ -107,7 +107,7 @@ victory.bgm.loopend =
 [Title Info]
 fadein.time = 10
 fadeout.time = 10
-menu.pos = 640,380
+menu.pos = 640,390
 menu.item.font = 3,0,0
 menu.item.active.font = 3,1,0, 224,240,240
 menu.item.spacing = 0, 52
@@ -130,9 +130,9 @@ textinput.overlay.alpha = 20, 100                     ;Ikemen feature
 
 ; These parameters define the window in which the items are visible
 ; in.
-menu.window.margins.y = 12, 8
+menu.window.margins.y = 25, 8
 menu.window.visibleitems = 5
-menu.boxcursor.visible = 1     ;Set to 0 to disable default cursor display
+menu.boxcursor.visible = 0     ;Set to 0 to disable default cursor display
 menu.boxcursor.coords = -58,-10,57,2
 ; These are the sounds for cursor movement
 cursor.move.snd = 100,0
