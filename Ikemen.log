@@ -3,5 +3,6 @@ stack traceback:
 	[G]: in function 'refresh'
 	external/script/main.lua:3962: in function 'f_menuCommonDraw'
 	external/script/main.lua:3033: in function 'loop'
+	external/script/main.lua:3121: in function 'loop'
 	external/script/main.lua:4093: in main chunk
 	[G]: ?
